@@ -31,9 +31,9 @@ protocol/TEST_001.md
         ↓
 protocol/TEST_001_EASY_RUN_SHEET.md
         ↓
-runs/TEST_001_OUTPUT_TEMPLATE.md
+AI generates the complete run output after the scored interaction
         ↓
-formal run evidence
+score generated trace
         ↓
 results
 ```
@@ -60,27 +60,53 @@ Records the claims extracted from the paper before test design.
 
 [`protocol/TEST_001_EASY_RUN_SHEET.md`](protocol/TEST_001_EASY_RUN_SHEET.md)
 
-Contains the exact operator workflow, including:
+This is the operator workflow.
 
-- what file to attach;
-- how to choose the hidden target;
-- the exact first prompt to paste into a fresh model context;
-- exactly how to answer each model question;
-- how to record the trace;
-- the optional post-run transcript extraction paste;
-- and the scoring command.
+It contains:
 
-### 5. Run Output Sheet — One Copy Per Formal Run
+- the exact start paste;
+- the YES/NO response rule;
+- the exact event that ends the scored interaction;
+- and the **final collection paste** that asks the same AI to generate the complete metadata, exact scored transcript, final-answer record, deviations, and scorer-ready trace.
+
+**The operator does not manually fill an output sheet.**
+
+### 5. Generated Run Output Schema
 
 [`runs/TEST_001_OUTPUT_TEMPLATE.md`](runs/TEST_001_OUTPUT_TEMPLATE.md)
 
-Copy this once for every formal run. It records the exact prompt, verbatim scored interaction, hidden target, final answer, scorer outputs, deviations, and run-level evidence.
+This defines the structure the AI must generate after the scored interaction. It is **not** a manual worksheet.
+
+The generated response is saved as the actual run record, for example:
+
+```text
+runs/RUN_001_TEST_001.md
+```
 
 ### 6. Supporting TEST_001 Assets
 
 - [`protocol/TEST_001_CANDIDATES.csv`](protocol/TEST_001_CANDIDATES.csv) — controlled answer space.
-- [`protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`](protocol/TEST_001_RUN_TRACE_TEMPLATE.csv) — raw question/answer trace format.
+- [`protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`](protocol/TEST_001_RUN_TRACE_TEMPLATE.csv) — scorer-input trace schema.
 - [`protocol/score_test_001.py`](protocol/score_test_001.py) — deterministic scoring for elimination and divider efficiency.
+
+---
+
+## Actual Operator Flow
+
+```text
+fresh AI chat
+→ upload TEST_001_CANDIDATES.csv
+→ privately choose target
+→ send PASTE 1
+→ answer only YES/NO
+→ AI gives FINAL ANSWER
+→ send PASTE 2 with true target
+→ AI generates metadata + exact transcript + scorer-ready trace
+→ save generated run output
+→ score trace afterward
+```
+
+No manual transcript reconstruction. No manual output-sheet completion. No scoring during the live test.
 
 ---
 
@@ -88,7 +114,7 @@ Copy this once for every formal run. It records the exact prompt, verbatim score
 
 **TEST_001 is designed and frozen. No formal TEST_001 results have been declared yet.**
 
-The `runs/` folder currently contains the output template. Actual run evidence is added only when a formal run is completed.
+The `runs/` folder currently contains the generated-output schema. Actual run evidence is added only when a formal run is completed.
 
 The `results/` stage is created only after the formal run set has produced evidence sufficient for synthesis.
 
