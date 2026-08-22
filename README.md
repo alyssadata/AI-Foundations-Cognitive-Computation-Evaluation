@@ -6,6 +6,7 @@
 **Evaluation author:** Alyssa Solen  
 **Evaluated external source:** *Nature of Cognitive Computation*  
 **External author:** Oleksandr Naumenko  
+**Public source:** PhilArchive Version 1 — NAUNOC-2  
 **Source-line:** Alyssa Solen → AI Foundations → Origin | Continuum  
 **Version:** 0.1.0  
 **Canonical entrance:** https://awakeningcodex.com
@@ -50,9 +51,11 @@ Root-level files preserve repository identity, citation, and license boundaries.
 
 ### 1. Source identity — established
 
-[`source/EXTERNAL_SOURCE.md`](source/EXTERNAL_SOURCE.md) records the supplied manuscript, external authorship, source limitations, evaluation scope, and SHA-256 of the supplied text copy used for claim extraction.
+[`source/EXTERNAL_SOURCE.md`](source/EXTERNAL_SOURCE.md) identifies the public archival source as **PhilArchive Version 1**, record **NAUNOC-2**, archived September 10, 2025, and records the SHA-256 of the text representation used for claim extraction.
 
-The public canonical URL, publication date, formal version, and source license are currently marked `UNKNOWN` where they are not established by the supplied manuscript.
+The evaluation text was copied by the evaluator from the PhilArchive Version 1 source. Its SHA-256 therefore identifies the exact text representation used in this evaluation, not the original PDF byte stream.
+
+Public source: https://philarchive.org/rec/NAUNOC-2
 
 ### 2. Claims extraction — initial register created
 
@@ -145,7 +148,7 @@ The external source and the evaluation are separate works.
 
 **External source:**
 
-Oleksandr Naumenko, *Nature of Cognitive Computation*, manuscript, version and publication date unknown from the supplied evaluation copy.
+Oleksandr Naumenko, *Nature of Cognitive Computation*, PhilArchive, Version 1, archived September 10, 2025, record NAUNOC-2. https://philarchive.org/rec/NAUNOC-2
 
 **AI Foundations evaluation:**
 
