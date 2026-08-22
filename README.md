@@ -22,8 +22,6 @@ The paper remains external to AI Foundations regardless of the evaluation outcom
 
 ## Start Here
 
-The repository now has one active evaluation path:
-
 ```text
 source/EXTERNAL_SOURCE.md
         ↓
@@ -31,7 +29,11 @@ claims/CLAIMS_REGISTER.md
         ↓
 protocol/TEST_001.md
         ↓
-formal runs
+protocol/TEST_001_EASY_RUN_SHEET.md
+        ↓
+runs/TEST_001_OUTPUT_TEMPLATE.md
+        ↓
+formal run evidence
         ↓
 results
 ```
@@ -40,7 +42,7 @@ results
 
 [`source/EXTERNAL_SOURCE.md`](source/EXTERNAL_SOURCE.md)
 
-Records exactly which external paper/version is being evaluated and preserves the source boundary.
+Records exactly which external paper/version is being evaluated.
 
 ### 2. Claims
 
@@ -48,29 +50,47 @@ Records exactly which external paper/version is being evaluated and preserves th
 
 Records the claims extracted from the paper before test design.
 
-### 3. Active Test
+### 3. Formal TEST_001 Protocol
 
 [`protocol/TEST_001.md`](protocol/TEST_001.md)
 
-**TEST_001 question:**
-
 > **Given an explicit identification problem with a defined answer space, can an intelligent system autonomously select successive distinctions that efficiently reduce that space and identify the correct answer?**
 
-### 4. TEST_001 Assets
+### 4. Easy Run Sheet — Use This to Actually Run the Test
 
-- [`protocol/TEST_001_CANDIDATES.csv`](protocol/TEST_001_CANDIDATES.csv) — the controlled answer space.
-- [`protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`](protocol/TEST_001_RUN_TRACE_TEMPLATE.csv) — the exact trace format used to record a run.
+[`protocol/TEST_001_EASY_RUN_SHEET.md`](protocol/TEST_001_EASY_RUN_SHEET.md)
+
+Contains the exact operator workflow, including:
+
+- what file to attach;
+- how to choose the hidden target;
+- the exact first prompt to paste into a fresh model context;
+- exactly how to answer each model question;
+- how to record the trace;
+- the optional post-run transcript extraction paste;
+- and the scoring command.
+
+### 5. Run Output Sheet — One Copy Per Formal Run
+
+[`runs/TEST_001_OUTPUT_TEMPLATE.md`](runs/TEST_001_OUTPUT_TEMPLATE.md)
+
+Copy this once for every formal run. It records the exact prompt, verbatim scored interaction, hidden target, final answer, scorer outputs, deviations, and run-level evidence.
+
+### 6. Supporting TEST_001 Assets
+
+- [`protocol/TEST_001_CANDIDATES.csv`](protocol/TEST_001_CANDIDATES.csv) — controlled answer space.
+- [`protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`](protocol/TEST_001_RUN_TRACE_TEMPLATE.csv) — raw question/answer trace format.
 - [`protocol/score_test_001.py`](protocol/score_test_001.py) — deterministic scoring for elimination and divider efficiency.
-
-That is the entire active test.
 
 ---
 
 ## Current Status
 
-**TEST_001 is designed and frozen. No formal TEST_001 runs or results have been added yet.**
+**TEST_001 is designed and frozen. No formal TEST_001 results have been declared yet.**
 
-The `runs/` and `results/` stages are created only when actual formal evidence exists.
+The `runs/` folder currently contains the output template. Actual run evidence is added only when a formal run is completed.
+
+The `results/` stage is created only after the formal run set has produced evidence sufficient for synthesis.
 
 ---
 
