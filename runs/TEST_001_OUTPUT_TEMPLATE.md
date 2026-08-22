@@ -1,149 +1,120 @@
-# AI Foundations | TEST_001 — Run Output Sheet
+# AI Foundations | TEST_001 — Generated Run Output Template
 
-Make one copy of this file for each formal run.
-
-Example filename:
-
-```text
-RUN_001_TEST_001.md
-```
-
-Do not score the run while it is happening. This sheet is filled **after the tested AI gives its final answer**.
+**Claim:** EXT-CLM-004  
+**Test:** TEST_001  
+**Formal protocol:** `protocol/TEST_001.md`
 
 ---
 
-## 1. Run Information
+## Purpose
+
+This file defines the required structure of the **AI-generated archival output produced after a TEST_001 run**.
+
+**The operator does not manually fill this sheet.**
+
+After the tested AI gives its scored `FINAL ANSWER`, the operator uses **PASTE 2** from `protocol/TEST_001_EASY_RUN_SHEET.md`. That final collection prompt tells the same AI to return the complete run metadata, exact scored transcript, final-answer record, deviations, and scorer-ready trace in the structure below.
+
+The AI-generated response is then saved as the run record, for example:
 
 ```text
+runs/RUN_001_TEST_001.md
+```
+
+Use `UNKNOWN` for unavailable metadata. Never invent missing metadata or reconstruct an incomplete transcript.
+
+---
+
+# REQUIRED GENERATED OUTPUT
+
+```text
+# AI Foundations | TEST_001 — Run Output
+
+## 1. Run Identity
 RUN_ID:
-DATE:
-N: 8 / 16 / 32 / 64
-HIDDEN_TARGET:
-MODEL / VERSION:
-INTERFACE:
-FRESH CONTEXT USED: YES / NO
-OPERATOR: Alyssa Solen
-```
-
-Use `UNKNOWN` if a field is unavailable.
-
----
+DATE_TIME:
+CANDIDATE_SPACE_N:
+TRUE_HIDDEN_TARGET:
+MODEL / SYSTEM / SOFTWARE VERSION:
+INTERFACE / PRODUCT / ENVIRONMENT:
+FRESH_CONTEXT_USED:
+TOOLS / FILE ACCESS:
+SAMPLING SETTINGS IF AVAILABLE:
 
 ## 2. Exact Start Prompt
+[EXACT PASTE 1 PROMPT AS SENT, INCLUDING THE ACTUAL N]
 
-Paste the exact PASTE 1 prompt you sent, with the actual N filled in.
+## 3. Verbatim Scored Interaction
+[EXACT INTERACTION FROM THE FIRST PROPERTY QUESTION THROUGH FINAL ANSWER]
 
-```text
-[PASTE EXACT START PROMPT HERE]
-```
-
----
-
-## 3. Full Scored Interaction
-
-Paste everything from the AI's first property question through its final answer.
-
-Do not summarize or clean it up.
-
-```text
-[PASTE FULL SCORED INTERACTION HERE]
-```
-
-The scored interaction ends at:
-
-```text
-FINAL ANSWER: Cxx
-```
-
----
-
-## 4. Result
-
-```text
-TRUE HIDDEN TARGET:
-MODEL FINAL ANSWER:
-CORRECT: YES / NO
-```
-
-Do not correct the AI before recording its answer.
-
----
-
-## 5. Simple Question Trace
-
-After the run is over, use PASTE 2 from `protocol/TEST_001_EASY_RUN_SHEET.md` and paste the returned trace here.
-
-```text
-step,property,answer
-[PASTE TRACE HERE]
-```
-
-If the tested AI cannot recover the trace exactly, write:
-
-```text
+If exact transcript access is incomplete, write:
 TRANSCRIPT ACCESS INCOMPLETE
-```
 
-The full scored interaction above remains the primary evidence.
+## 4. Final Identification
+MODEL_FINAL_ANSWER:
+CORRECT_IDENTIFICATION: YES / NO
 
----
+## 5. Scorer-Ready Trace
+candidate_space_n,target,step,property,answer
+[ONE ROW PER SCORED PROPERTY QUESTION]
 
-## 6. Deviations
+## 6. Deviations / Missing Data
+TARGET_LEAKED_BEFORE_FINAL_ANSWER: YES / NO / UNKNOWN
+NON_YES_NO_OPERATOR_RESPONSE_DURING_SCORED_RUN: YES / NO / UNKNOWN
+INVALID_OR_COMPOUND_MODEL_QUESTION: YES / NO / UNKNOWN
+INTERRUPTION_OR_TOOL_FAILURE: YES / NO / UNKNOWN
+TRANSCRIPT_ACCESS: COMPLETE / INCOMPLETE
+OTHER_DEVIATION:
 
-```text
-TARGET LEAKED BEFORE FINAL ANSWER: YES / NO
-NON-YES/NO OPERATOR RESPONSE: YES / NO
-INVALID / COMPOUND MODEL QUESTION: YES / NO
-INTERRUPTION OR TOOL FAILURE: YES / NO
-OTHER DEVIATION:
-```
+## 7. Scoring Status
+SCORING_STATUS: PENDING
 
-If none:
-
-```text
-OTHER DEVIATION: NONE
-```
-
----
-
-## 7. Scoring — Fill Afterward
-
-Do not calculate this during the run.
-
-After the simple trace has been converted into the scorer input and `protocol/score_test_001.py` has been run, copy the generated summary here.
-
-```text
-SUCCESS:
-QUESTIONS:
-BINARY LOWER BOUND:
-QUESTION OVERHEAD:
-MEAN DIVIDER EFFICIENCY:
-FINAL REMAINING CANDIDATE(S):
-```
-
-If scoring has not been run yet:
-
-```text
-SCORING STATUS: PENDING
+## 8. Archival Integrity Note
+[STATE WHETHER THE METADATA, START PROMPT, SCORED TRANSCRIPT, FINAL ANSWER, AND TRACE WERE RECOVERED COMPLETELY FROM THE CURRENT CONVERSATION]
 ```
 
 ---
 
-## 8. Run Statement — Fill After Scoring
+## Scoring Happens After This Output Is Generated
+
+Section 5 is saved separately as the scorer input, for example:
 
 ```text
-In this run, the tested system [correctly / incorrectly] identified [HIDDEN TARGET] from an answer space of N = [N] using [QUESTIONS] successive property questions. Mean divider efficiency was [VALUE], with question overhead of [VALUE] above the binary lower bound.
+runs/RUN_001_TEST_001_TRACE.csv
 ```
 
-This is a factual statement about this run only. It is not the overall TEST_001 result.
+Then run:
+
+```text
+python protocol/score_test_001.py protocol/TEST_001_CANDIDATES.csv runs/RUN_001_TEST_001_TRACE.csv
+```
+
+The deterministic scorer, not the tested AI and not the operator, produces:
+
+- question count;
+- binary lower bound;
+- question overhead;
+- step-level elimination;
+- best available divider;
+- divider efficiency;
+- final remaining candidate state.
+
+Do not ask the tested AI to invent or estimate those scorer outputs in the archival record.
 
 ---
 
-## 9. External-Source Boundary
+## Primary Evidence Rule
+
+The original visible interaction remains primary evidence.
+
+The generated run output is an archival extraction from that interaction. If the generated transcript conflicts with the visible interaction, preserve the visible interaction and mark the generated extraction as incomplete or discrepant rather than silently repairing it.
+
+---
+
+## External-Source Boundary
 
 This run contributes evidence toward TEST_001 for EXT-CLM-004.
 
-It does not establish that all cognition is logarithmic, that every recognition problem has a clean answer space, or that *Nature of Cognitive Computation* is supported as a whole.
+A single run does not establish that all cognition is logarithmic, that every recognition problem has a clean answer space, or that *Nature of Cognitive Computation* is supported as a whole.
 
 **AI Foundations conducted the evaluation. AI Foundations did not author the evaluated external source.**
 
