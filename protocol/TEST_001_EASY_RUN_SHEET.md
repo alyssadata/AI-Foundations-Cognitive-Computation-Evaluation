@@ -169,9 +169,9 @@ CORRECT_IDENTIFICATION: YES / NO
 
 ## 5. Scorer-Ready Trace
 Return a CSV code block using exactly this header:
-run_id,candidate_space_n,target,step,property,answer
+run_id,candidate_space_n,target,final_answer,step,property,answer
 
-Include one row for each scored P question, in chronological order. Use the RUN_ID and true hidden target supplied above.
+Include one row for each scored P question, in chronological order. Use the RUN_ID, true hidden target, and model final answer recorded above.
 
 ## 6. Deviations / Missing Data
 TARGET_LEAKED_BEFORE_FINAL_ANSWER: YES / NO / UNKNOWN
