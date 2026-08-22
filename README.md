@@ -61,30 +61,27 @@ Public source: https://philarchive.org/rec/NAUNOC-2
 
 [`claims/CLAIMS_REGISTER.md`](claims/CLAIMS_REGISTER.md) records the initial external claim set before protocol design.
 
-Each claim receives a stable `EXT-CLM-###` identifier and records:
-
-- what the external source actually claims;
-- where it appears;
-- whether it is explicit, derived, interpretive, or ambiguous;
-- current evaluation readiness;
-- scope and dependencies;
-- ambiguities that must not be silently repaired;
-- a testability preview;
-- and whether the claim is selected for current evaluation.
+Each claim receives a stable `EXT-CLM-###` identifier and records the source claim, location, status, dependencies, evaluation readiness, and source-to-test boundary.
 
 **Claim extraction comes before operationalization.**
 
-### 3. Protocol design — next stage
+### 3. TEST_001 — protocol frozen, formal runs pending
 
-The strongest first protocol candidates currently identified are:
+[`protocol/PROTOCOL_001_EXT-CLM-004.md`](protocol/PROTOCOL_001_EXT-CLM-004.md) now defines **TEST_001 — Bounded Identification by Successive Distinctions** for `EXT-CLM-004`.
 
-- `EXT-CLM-003` — core option/constraint selection algorithm;
-- `EXT-CLM-004` — hierarchical recognition complexity;
-- `EXT-CLM-005` — dimensionality reduction and efficiency;
-- `EXT-CLM-006` — specialization/generalization behavior;
-- `EXT-CLM-008` — property ranges versus point-accurate representation.
+Formal test question:
 
-The cross-domain generality claim, `EXT-CLM-007`, should be tested only after a stable operational form of the core algorithm has been established.
+> **Given an explicit identification problem with a defined answer space, can an intelligent system autonomously select successive distinctions that efficiently reduce that space and identify the correct answer?**
+
+The protocol deliberately does not hand the tested system a decision tree. It provides a bounded candidate space and measurable binary properties, keeps the intended target hidden, and scores the system's own successive divider choices against the strongest divider actually available at each state.
+
+Primary assets:
+
+- [`protocol/TEST_001_CANDIDATES.csv`](protocol/TEST_001_CANDIDATES.csv) — controlled answer space;
+- [`protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`](protocol/TEST_001_RUN_TRACE_TEMPLATE.csv) — raw question/answer record;
+- [`protocol/score_test_001.py`](protocol/score_test_001.py) — deterministic scoring of elimination and divider efficiency.
+
+Protocol v2.0.0 supersedes the earlier v1.0.0 prebuilt-tree scaling demonstration as the formal TEST_001 design. Earlier run/result artifacts remain historical preliminary evidence and are not results of v2.0.0.
 
 ---
 
@@ -111,12 +108,14 @@ A successful run does not validate the entire paper. A failed run does not inval
 
 - [`source/EXTERNAL_SOURCE.md`](source/EXTERNAL_SOURCE.md) — completed provenance and source-boundary record.
 - [`claims/CLAIMS_REGISTER.md`](claims/CLAIMS_REGISTER.md) — working external claim register.
-- [`protocol/PROTOCOL_TEMPLATE.md`](protocol/PROTOCOL_TEMPLATE.md) — formal protocol template to be customized for selected Claim IDs.
-- [`protocol/EASY_RUN_SHEET_TEMPLATE.md`](protocol/EASY_RUN_SHEET_TEMPLATE.md) — operator-facing execution template.
+- [`protocol/PROTOCOL_001_EXT-CLM-004.md`](protocol/PROTOCOL_001_EXT-CLM-004.md) — frozen TEST_001 protocol v2.0.0.
+- [`protocol/TEST_001_CANDIDATES.csv`](protocol/TEST_001_CANDIDATES.csv) — TEST_001 controlled candidate matrix.
+- [`protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`](protocol/TEST_001_RUN_TRACE_TEMPLATE.csv) — TEST_001 raw trace schema.
+- [`protocol/score_test_001.py`](protocol/score_test_001.py) — TEST_001 deterministic scorer.
+- [`protocol/PROTOCOL_TEMPLATE.md`](protocol/PROTOCOL_TEMPLATE.md) — reusable formal protocol template.
+- [`protocol/EASY_RUN_SHEET_TEMPLATE.md`](protocol/EASY_RUN_SHEET_TEMPLATE.md) — reusable operator-facing execution template.
 - [`runs/RUN_OUTPUT_TEMPLATE.md`](runs/RUN_OUTPUT_TEMPLATE.md) — reproducible run/evidence schema.
 - [`results/EVALUATION_SUMMARY_TEMPLATE.md`](results/EVALUATION_SUMMARY_TEMPLATE.md) — post-run claim-level synthesis template.
-
-Protocol, run, and result templates remain templates until the corresponding study is designed or executed.
 
 ---
 
