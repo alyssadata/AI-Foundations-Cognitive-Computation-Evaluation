@@ -14,19 +14,22 @@
 **Creator identifier:** ORCID 0000-0002-5244-707X  
 **Source type:** research manuscript / theory paper  
 **Author affiliation stated in source:** Independent researcher, Lviv, Ukraine  
-**Original publisher / host / provider:** UNKNOWN from the supplied manuscript  
-**Canonical public source location:** UNKNOWN from the supplied manuscript  
-**Evaluation source location:** manuscript copy supplied to the evaluator  
-**Version / edition / release:** UNKNOWN  
-**Publication / release date:** UNKNOWN  
+**Public archive / host:** PhilArchive  
+**Canonical public source location:** https://philarchive.org/rec/NAUNOC-2  
+**PhilArchive record identifier:** NAUNOC-2  
+**Archive version:** Version 1  
+**PhilArchive archival date:** 2025-09-10  
+**PhilArchive upload timestamp:** 2025-09-10 07:23:09 GMT  
+**Archive format:** PDF  
+**Evaluation source location:** text copied by the evaluator from the PhilArchive Version 1 archival source  
 **Date accessed / received for this evaluation:** 2026-08-22  
-**Other persistent source identifier:** UNKNOWN
+**DOI / other persistent identifier:** No DOI identified in the PhilArchive record; PhilArchive record NAUNOC-2 is the public archival identifier used here.
 
 ---
 
 ## 2. Exact Material Under Evaluation
 
-The source record covers the complete supplied manuscript. The evaluation itself is limited to claims that are explicitly registered in `../claims/CLAIMS_REGISTER.md` and subsequently selected for protocol design.
+The source record covers the complete PhilArchive Version 1 manuscript represented in the text copy used for this evaluation. The evaluation itself is limited to claims that are explicitly registered in `../claims/CLAIMS_REGISTER.md` and subsequently selected for protocol design.
 
 **Material under evaluation:**
 
@@ -46,11 +49,11 @@ The paper's proposed account of cognitive computation, including its claims conc
 
 **Working external citation:**
 
-Oleksandr Naumenko, *Nature of Cognitive Computation*, manuscript, version and publication date unknown from the supplied evaluation copy.
+Oleksandr Naumenko, *Nature of Cognitive Computation*, PhilArchive, Version 1, archived September 10, 2025, record NAUNOC-2. https://philarchive.org/rec/NAUNOC-2
 
 **External source license / use terms:**
 
-UNKNOWN from the supplied manuscript.
+No specific source license has been established from the PhilArchive record used for this evaluation.
 
 The external manuscript is not redistributed by this repository. This repository records provenance, claim locations, evaluation materials, and results separately.
 
@@ -93,19 +96,24 @@ Citation, testing, reproduction of test conditions, and methodological discussio
 ```text
 SOURCE TITLE: Nature of Cognitive Computation
 AUTHOR: Oleksandr Naumenko
-VERSION / EDITION: UNKNOWN
+PUBLIC ARCHIVE: PhilArchive
+PUBLIC RECORD: https://philarchive.org/rec/NAUNOC-2
+PHILARCHIVE RECORD ID: NAUNOC-2
+ARCHIVE VERSION: Version 1
+ARCHIVAL DATE: 2025-09-10
+UPLOAD TIMESTAMP: 2025-09-10 07:23:09 GMT
+ARCHIVE FORMAT: PDF
 DATE ACCESSED / RECEIVED: 2026-08-22
-SUPPLIED EVALUATION COPY: text extraction / manuscript copy supplied to evaluator
-SUPPLIED COPY SIZE: 132487 bytes
-SUPPLIED COPY SHA-256: 3555e7f5085b6376ec1aed49ee4ccfdf10d28783705ce4d77ce51592edd8a233
-CANONICAL PUBLIC URL / DOI: UNKNOWN
+EVALUATION TEXT ORIGIN: copied by evaluator from the PhilArchive Version 1 archival source
+EVALUATION TEXT SIZE: 132487 bytes
+EVALUATION TEXT SHA-256: 3555e7f5085b6376ec1aed49ee4ccfdf10d28783705ce4d77ce51592edd8a233
 LOCAL EVALUATION COPY AVAILABLE TO EVALUATOR: yes
 SOURCE REDISTRIBUTED IN THIS REPOSITORY: no
-SOURCE MODIFIED FOR CLAIM EXTRACTION: no substantive modification; formatting/page text was supplied as extracted text
-NOTES: The SHA-256 identifies the supplied text copy used for this evaluation, not an asserted canonical publisher PDF.
+SOURCE MODIFIED FOR CLAIM EXTRACTION: no substantive modification; the evaluation copy is a text representation rather than the original PDF byte stream
+NOTES: The SHA-256 identifies the pasted/text representation used for this evaluation. It is not a byte-level hash of the PhilArchive PDF. The evaluator copied this text from the PhilArchive Version 1 source, so the evaluation copy is treated as a text representation of that archived source rather than as a separate manuscript version.
 ```
 
-If a canonical public version, DOI, formal release date, or revised manuscript is later supplied, record it as a source-version update rather than silently replacing this record.
+If PhilArchive later exposes another version or the author supplies a revised manuscript, record it as a source-version update rather than silently replacing this record.
 
 ---
 
@@ -114,8 +122,9 @@ If a canonical public version, DOI, formal release date, or revised manuscript i
 ```text
 [x] External author / creator identified
 [x] External source title identified
-[x] Evaluation source copy identified
-[x] Version / date / public identifier marked UNKNOWN where unavailable
+[x] Public archive and record identified
+[x] PhilArchive Version 1 and archival date recorded
+[x] Evaluation text provenance recorded
 [x] Exact evaluated material bounded through the claims register
 [x] External citation recorded separately
 [x] AI Foundations identified as evaluator
