@@ -77,6 +77,31 @@ Binary minimum: 6
 Additional choices: 6
 ```
 
+### Why TEST_001 Uses N = 8, 16, 32, and 64
+
+The specific values `8`, `16`, `32`, and `64` are **AI Foundations evaluation-design choices**. They are not values specified by Naumenko.
+
+The external paper supplies the scaling claim: hierarchical difference-based recognition is described as a binary-search-like process in which useful successive distinctions can reduce recognition from `O(N)` toward `O(log N)`. The paper also uses a much larger illustrative case of roughly one million categories and approximately twenty binary comparisons.
+
+TEST_001 uses smaller powers of two so that the scaling behavior can be measured cleanly and repeatedly under controlled conditions.
+
+```text
+N = 8   → binary lower bound = 3 questions
+N = 16  → binary lower bound = 4 questions
+N = 32  → binary lower bound = 5 questions
+N = 64  → binary lower bound = 6 questions
+```
+
+Each condition exactly doubles the candidate space. Under ideal binary division, each doubling should require only **one additional question**. This creates a simple scaling ladder rather than a single easy/hard comparison.
+
+The four conditions serve different experimental roles:
+
+- `N = 8` establishes the small-space floor: can the system perform the task when the answer space is minimal but still requires successive distinctions?
+- `N = 16` and `N = 32` provide intermediate scaling points, allowing degradation or improvement to be located rather than observed only at the endpoints.
+- `N = 64` is the largest formal condition in TEST_001: large enough to require six ideal binary distinctions and meaningful property selection, while still remaining practical for repeated controlled runs and exact scoring.
+
+The purpose of using four powers of two is therefore **not** to reproduce a number stated in the paper. It is to operationalize the paper's scaling claim in a controlled test where candidate-space growth and binary lower bounds are explicit.
+
 ### Property-Count Control
 
 For each condition:
