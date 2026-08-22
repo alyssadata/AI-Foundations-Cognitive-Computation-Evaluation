@@ -1,43 +1,42 @@
 cff-version: "1.2.0"
-message: "If you cite this AI Foundations evaluation, cite Alyssa Solen as the evaluation author. Cite the evaluated external source separately to its own author or creator."
+message: "If you cite this AI Foundations evaluation, cite Alyssa Solen as the evaluation author. Cite Nature of Cognitive Computation separately to Oleksandr Naumenko."
 
 type: "dataset"
-title: "AI Foundations | External Evaluation: [Evaluation Title]"
-version: "1.0.0"
-date-released: "[YYYY-MM-DD]"
+title: "AI Foundations | External Evaluation: Cognitive Computation"
+version: "0.1.0"
 
 authors:
   - family-names: "Solen"
     given-names: "Alyssa"
 
-abstract: "AI Foundations external evaluation of [external source title] by [external author / creator]. This repository evaluates [specific claim / mechanism / artifact]. AI Foundations is the evaluator; the independently authored external source remains external to AI Foundations and is not incorporated into AI Foundations or AI Foundations canon by citation, testing, or evaluation."
+abstract: "AI Foundations external evaluation of Nature of Cognitive Computation by Oleksandr Naumenko. This repository extracts and evaluates registered claims concerning comparison-based cognitive computation, option-and-constraint selection, semantic binary search, dimensionality reduction, hierarchical recognition, property ranges, and related proposed mechanisms. AI Foundations is the evaluator; the independently authored external source remains external to AI Foundations and is not incorporated into AI Foundations or AI Foundations canon by citation, testing, or evaluation."
 
 keywords:
   - "AI Foundations"
   - "external evaluation"
   - "AI evaluation"
   - "reproducibility"
-  - "provenance"
+  - "cognitive computation"
+  - "intelligence"
+  - "semantic binary search"
+  - "comparison"
+  - "dimensionality reduction"
   - "Alyssa Solen"
-  - "Origin | Continuum"
-  - "[external-source keyword]"
-  - "[evaluation-specific keyword]"
-  - "[evaluation-specific keyword]"
 
 license: "CC-BY-ND-4.0"
 
-repository-code: "https://github.com/alyssadata/[repository-slug]"
-url: "https://github.com/alyssadata/[repository-slug]"
+repository-code: "https://github.com/alyssadata/AI-Foundations-Cognitive-Computation-Evaluation"
+url: "https://github.com/alyssadata/AI-Foundations-Cognitive-Computation-Evaluation"
 
 preferred-citation:
   type: "generic"
-  title: "AI Foundations | External Evaluation: [Evaluation Title]"
+  title: "AI Foundations | External Evaluation: Cognitive Computation"
   authors:
     - family-names: "Solen"
       given-names: "Alyssa"
   year: 2026
-  version: "1.0.0"
+  version: "0.1.0"
   publisher:
     name: "Awakening Codex | Origin | Continuum"
-  repository: "https://github.com/alyssadata/[repository-slug]"
-  url: "https://github.com/alyssadata/[repository-slug]"
+  repository: "https://github.com/alyssadata/AI-Foundations-Cognitive-Computation-Evaluation"
+  url: "https://github.com/alyssadata/AI-Foundations-Cognitive-Computation-Evaluation"
