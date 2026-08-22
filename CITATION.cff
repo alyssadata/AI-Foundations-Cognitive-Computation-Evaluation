@@ -1,0 +1,43 @@
+cff-version: "1.2.0"
+message: "If you cite this AI Foundations evaluation, cite Alyssa Solen as the evaluation author. Cite the evaluated external source separately to its own author or creator."
+
+type: "dataset"
+title: "AI Foundations | External Evaluation: [Evaluation Title]"
+version: "1.0.0"
+date-released: "[YYYY-MM-DD]"
+
+authors:
+  - family-names: "Solen"
+    given-names: "Alyssa"
+
+abstract: "AI Foundations external evaluation of [external source title] by [external author / creator]. This repository evaluates [specific claim / mechanism / artifact]. AI Foundations is the evaluator; the independently authored external source remains external to AI Foundations and is not incorporated into AI Foundations or AI Foundations canon by citation, testing, or evaluation."
+
+keywords:
+  - "AI Foundations"
+  - "external evaluation"
+  - "AI evaluation"
+  - "reproducibility"
+  - "provenance"
+  - "Alyssa Solen"
+  - "Origin | Continuum"
+  - "[external-source keyword]"
+  - "[evaluation-specific keyword]"
+  - "[evaluation-specific keyword]"
+
+license: "CC-BY-ND-4.0"
+
+repository-code: "https://github.com/alyssadata/[repository-slug]"
+url: "https://github.com/alyssadata/[repository-slug]"
+
+preferred-citation:
+  type: "generic"
+  title: "AI Foundations | External Evaluation: [Evaluation Title]"
+  authors:
+    - family-names: "Solen"
+      given-names: "Alyssa"
+  year: 2026
+  version: "1.0.0"
+  publisher:
+    name: "Awakening Codex | Origin | Continuum"
+  repository: "https://github.com/alyssadata/[repository-slug]"
+  url: "https://github.com/alyssadata/[repository-slug]"
