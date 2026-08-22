@@ -1,230 +1,237 @@
 # AI Foundations | TEST_001 — Easy Run Sheet
 
-**Evaluator:** AI Foundations  
-**Evaluation author:** Alyssa Solen  
-**Source-line:** Alyssa Solen → AI Foundations → Origin | Continuum  
-**Repository:** AI-Foundations-Cognitive-Computation-Evaluation  
-**External source:** *Nature of Cognitive Computation*  
-**External author / creator:** Oleksandr Naumenko  
-**External source version / identifier:** PhilArchive Version 1 / NAUNOC-2 / 2025-09-10  
-**Claim / test ID:** EXT-CLM-004 / TEST_001  
-**Protocol:** `protocol/TEST_001.md` v2.0.0  
-**Run-sheet version:** 1.0.0
+**Claim:** EXT-CLM-004  
+**Test:** TEST_001  
+**Formal protocol:** `protocol/TEST_001.md`
 
 ---
 
-## What This Sheet Is
+# WHAT YOU DO
 
-This is the operator-facing execution sheet for **TEST_001 — Bounded Identification by Successive Distinctions**.
+For one run:
 
-Formal test question:
+**fresh AI chat → upload candidate file → secretly choose one candidate → paste the start prompt → answer YES/NO → save the finished interaction**
 
-> **Given an explicit identification problem with a defined answer space, can an intelligent system autonomously select successive distinctions that efficiently reduce that space and identify the correct answer?**
+That is the whole run.
 
-Use this sheet to run the test without having to reinterpret the formal protocol during execution.
+You do **not** calculate scores while the test is running.
+You do **not** fill out branch sizes while the test is running.
+You do **not** run Python while the test is running.
 
 ---
 
-# BEFORE YOU START
+# BEFORE THE RUN
 
-## 1. Choose one candidate-space size
+## 1. Choose the run size
 
-Run one of the four formal conditions:
+Use one of these:
 
 ```text
-N = 8   -> active candidates C01–C08
-N = 16  -> active candidates C01–C16
-N = 32  -> active candidates C01–C32
-N = 64  -> active candidates C01–C64
+N = 8   → C01–C08
+N = 16  → C01–C16
+N = 32  → C01–C32
+N = 64  → C01–C64
 ```
 
-Minimum formal run set: **4 independently selected hidden targets at each N = 16 total runs.**
+Write down the N you chose.
 
-## 2. Open a fresh model context
+## 2. Open a fresh AI chat
 
-Use a fresh chat / model context for every formal run.
+Use a fresh context for every formal run.
 
-Record the model name/version and interface if visible. Do not guess unavailable metadata.
+Write down the model name/version if visible.
 
-## 3. Attach the candidate file
+## 3. Upload this file
 
-Attach:
+```text
+protocol/TEST_001_CANDIDATES.csv
+```
 
-`protocol/TEST_001_CANDIDATES.csv`
+## 4. Secretly choose the target
 
-The tested system may inspect the entire matrix, but only the first `N` rows are active for the selected condition.
+Pick exactly one candidate from the active range.
 
-## 4. Privately choose the hidden target
+Example:
 
-Choose exactly one candidate from the active set.
+```text
+If N = 16, choose one candidate from C01–C16.
+```
 
-Example for `N = 16`: choose one of `C01` through `C16`.
+Write the target down somewhere private.
 
-**Do not tell the model which candidate you selected.**
-
-Keep the candidate file open separately so you can answer each property question from the hidden target's row.
-
-## 5. Start a run record
-
-Copy `runs/TEST_001_OUTPUT_TEMPLATE.md` and rename the copy for the run, for example:
-
-`RUN_001_TEST_001.md`
-
-Also copy `protocol/TEST_001_RUN_TRACE_TEMPLATE.csv` for the raw question/answer trace.
+**Do not tell the tested AI which candidate you chose.**
 
 ---
 
-# RUN
+# PASTE 1 — START THE RUN
 
-## PASTE 1 — Start the test
-
-Replace `[N]` with the active candidate-space size before sending.
+Replace both `[N]` entries before sending.
 
 ```text
 You are participating in TEST_001.
 
-The attached file contains the candidate matrix. For this run, the active answer space is the first [N] candidates only: C01 through C[N]. Exactly one active candidate has been privately selected as the hidden target.
+The attached file contains the candidate matrix. For this run, the active answer space is C01 through C[N], for a total of [N] candidates. Exactly one active candidate has been privately selected as the hidden target.
 
-Your task is to identify the hidden target by selecting successive distinctions.
+Your task is to identify the hidden target.
 
 Rules:
-1. Ask only one YES/NO question at a time.
-2. Each question must ask about exactly one listed property P01–P10.
-3. You choose which property to ask about next. No decision tree or property order will be supplied.
-4. Do not ask directly for the candidate name or label.
-5. Do not ask the operator to describe or reveal the target.
-6. Do not use compound questions.
-7. After each YES/NO answer, continue until you are ready to identify one candidate.
-8. When you are ready, state exactly: FINAL ANSWER: Cxx
+- Ask one YES/NO question at a time.
+- Each question must ask about exactly one listed property, P01 through P10.
+- You choose which property to ask next.
+- No decision tree or property order will be supplied.
+- Do not ask directly for the candidate name or label.
+- Do not ask me to describe or reveal the target.
+- Do not use compound questions.
+- Continue until you are ready to identify one candidate.
+- When ready, state exactly: FINAL ANSWER: Cxx
 
 Begin with your first property question only.
 ```
 
-Do not add explanation before or after this paste.
-
 ---
 
-## FOR EACH MODEL QUESTION
+# DURING THE RUN
 
-The model should ask one property question such as:
+The AI will ask something like:
 
 ```text
 Is P04 YES for the hidden target?
 ```
 
-Look at the hidden target row in `TEST_001_CANDIDATES.csv` and reply with **only**:
+Find your hidden target's row in `TEST_001_CANDIDATES.csv`.
+
+If that row says `YES` for P04, reply:
 
 ```text
 YES
 ```
 
-or
+If that row says `NO` for P04, reply:
 
 ```text
 NO
 ```
 
-At the same time, add one row to the raw trace file:
+**Reply with YES or NO only.**
 
-```text
-candidate_space_n,target,step,property,answer
-```
+Then answer the next property question the same way.
 
-Example:
-
-```text
-16,C11,1,P04,NO
-```
-
-Do **not** tell the tested model the target while the run is active.
-
-Continue answering only `YES` or `NO` until the model gives a final answer.
-
----
-
-## WHEN THE MODEL GIVES ITS FINAL ANSWER
-
-Immediately record the exact final answer in the run output sheet.
-
-Do not correct the model before recording it.
-
-Then reveal the true hidden target only in the run record, not as part of the scored interaction.
-
-The scored interaction ends at:
+Keep going until the AI says:
 
 ```text
 FINAL ANSWER: Cxx
 ```
 
+The scored interaction ends immediately when the AI gives its final answer.
+
+Do not correct it before saving the result.
+
 ---
 
-# AFTER THE SCORED INTERACTION
+# AFTER THE FINAL ANSWER
 
-## PASTE 2 — Optional transcript extraction
+## 1. Record the result
 
-Use this only **after** the model has already given its final answer. It is not part of the scored interaction.
+Make a copy of:
+
+```text
+runs/TEST_001_OUTPUT_TEMPLATE.md
+```
+
+Rename it for the run, for example:
+
+```text
+RUN_001_TEST_001.md
+```
+
+Fill in:
+
+```text
+RUN ID
+DATE
+N
+HIDDEN TARGET
+MODEL
+MODEL FINAL ANSWER
+CORRECT: YES / NO
+```
+
+Then paste the complete scored interaction into that output file.
+
+---
+
+# PASTE 2 — GET A SIMPLE TRACE
+
+Only after the AI has already given its final answer, paste this:
 
 ```text
 The scored interaction is complete.
 
-Return a chronological trace of only the property questions you asked during the scored interaction and the YES/NO answers I gave.
+Return only a CSV trace of the property questions you asked during the scored interaction and the YES/NO answers I gave.
 
-Use exactly this CSV header:
+Use exactly this header:
 step,property,answer
 
-Do not add, remove, repair, reinterpret, or reorder any question or answer. If you cannot recover the complete scored interaction exactly, write:
+Example format:
+1,P04,NO
+2,P07,YES
+
+Do not add, remove, repair, reinterpret, or reorder anything.
+If you cannot recover the complete scored interaction exactly, write:
 TRANSCRIPT ACCESS INCOMPLETE
 ```
 
-Treat the original visible chat as primary evidence. Do not replace it with a reconstructed trace if the extraction is incomplete or conflicts with the visible transcript.
+Copy that trace into the run output file too.
+
+The original visible chat remains the primary evidence.
 
 ---
 
-# SCORE THE RUN
+# THAT IS ALL YOU DO FOR THE RUN
 
-Save the raw trace as a CSV using the five required columns:
+At this point, stop.
 
-```text
-candidate_space_n,target,step,property,answer
-```
-
-Then run:
+You have preserved:
 
 ```text
-python protocol/score_test_001.py protocol/TEST_001_CANDIDATES.csv runs/RUN_XXX_TEST_001_TRACE.csv
+N
+hidden target
+model
+exact start prompt
+full scored interaction
+model final answer
+correct / incorrect
+simple question trace
 ```
 
-The scorer creates:
+**Scoring happens afterward.**
 
-```text
-RUN_XXX_TEST_001_TRACE_SCORED_STEPS.csv
-RUN_XXX_TEST_001_TRACE_SUMMARY.csv
-```
+The scoring step converts the simple trace into the quantitative measures required by `TEST_001.md`, including elimination, best available divider, divider efficiency, question count, and overhead.
 
-Copy the summary values into `runs/TEST_001_OUTPUT_TEMPLATE.md` for the completed run.
+You do not calculate those by hand.
 
 ---
 
-# WHAT TO SAVE FOR EACH RUN
+# FORMAL RUN SET
 
-Save:
+The full formal evaluation requires:
 
 ```text
-RUN_XXX_TEST_001.md
-RUN_XXX_TEST_001_TRACE.csv
-RUN_XXX_TEST_001_TRACE_SCORED_STEPS.csv
-RUN_XXX_TEST_001_TRACE_SUMMARY.csv
+N = 8   → 4 runs
+N = 16  → 4 runs
+N = 32  → 4 runs
+N = 64  → 4 runs
+
+TOTAL = 16 runs
 ```
 
-Also preserve the original chat/interface transcript or export when available.
+Use a fresh AI context for each run and choose a hidden target independently for each run.
 
 ---
 
-# EASY FINAL RULE
+# ONE-LINE VERSION
 
-**The model must choose its own successive property distinctions, correctly identify the hidden target, and have those choices scored against the best divider actually available at each state.**
-
-The result evaluates the external claim dependency. It does not make the external claim part of AI Foundations.
+> **Upload the candidate matrix, secretly choose one candidate, paste PASTE 1, answer only YES/NO until the AI guesses, then save the interaction in the output sheet.**
 
 ---
 
