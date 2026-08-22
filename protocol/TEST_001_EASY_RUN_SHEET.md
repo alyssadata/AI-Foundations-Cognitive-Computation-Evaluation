@@ -8,9 +8,21 @@
 
 # WHAT YOU DO
 
+## Plain-language version
+
+**You pick a C. The AI asks about P's. You answer YES/NO until it identifies your C.**
+
+- `C01`, `C02`, `C03`, etc. are the possible candidates.
+- `P01` through `P10` are the properties the AI is allowed to ask about.
+- You secretly choose one `C` from the active range.
+- The AI does not know which `C` you chose.
+- The AI asks about the `P` values one at a time.
+- You answer `YES` or `NO` using the row for your chosen `C`.
+- The AI keeps asking until it gives one final `C` as its answer.
+
 For one run:
 
-**fresh AI chat → upload candidate file → secretly choose one candidate → paste the start prompt → answer YES/NO → after the AI gives its final answer, paste the final collection prompt → save the AI-generated run output**
+**fresh AI chat → upload candidate file → secretly choose one C → paste the start prompt → AI asks about P's → answer YES/NO → AI identifies a C → paste the final collection prompt → save the AI-generated run output**
 
 That is the whole operator workflow.
 
@@ -45,17 +57,17 @@ Use a fresh context for every formal run.
 protocol/TEST_001_CANDIDATES.csv
 ```
 
-## 4. Secretly choose the target
+## 4. Secretly choose the target C
 
-Pick exactly one candidate from the active range.
+Pick exactly one `C` from the active range.
 
 Example:
 
 ```text
-If N = 16, choose one candidate from C01–C16.
+If N = 16, choose one C from C01–C16.
 ```
 
-Keep the target private until the tested AI has given its final answer.
+Keep that `C` private until the tested AI has given its final answer.
 
 ---
 
@@ -88,13 +100,17 @@ Begin with your first property question only.
 
 # DURING THE SCORED RUN
 
+**You already picked a C. Now the AI asks about P's.**
+
 The AI will ask a property question such as:
 
 ```text
 Is P04 YES for the hidden target?
 ```
 
-Look at your hidden target's row in `TEST_001_CANDIDATES.csv` and reply with **only**:
+Look at your chosen `C` row in `TEST_001_CANDIDATES.csv` and find `P04`.
+
+Reply with **only**:
 
 ```text
 YES
@@ -105,6 +121,8 @@ or
 ```text
 NO
 ```
+
+Then the AI asks another `P` question. Answer from the same chosen `C` row.
 
 Continue until the AI states:
 
@@ -229,7 +247,7 @@ Use a fresh AI context and an independently selected hidden target for each run.
 
 # ONE-LINE VERSION
 
-> **Run the test, then ask the same AI for the complete metadata + exact transcript + scorer-ready trace; save its generated output. Do not fill an output sheet by hand.**
+> **Pick a C. The AI asks about P's. Answer YES/NO until it identifies your C. Then ask the same AI for the complete metadata + exact transcript + scorer-ready trace and save its generated output.**
 
 ---
 
