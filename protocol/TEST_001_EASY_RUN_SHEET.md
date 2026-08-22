@@ -10,7 +10,9 @@
 
 ## Plain-language version
 
-**You pick a C. The AI asks about P's. You answer YES/NO until it identifies your C.**
+**I pick a C.**  
+**The AI asks from P.**  
+**I answer YES/NO until it identifies my C.**
 
 - `C01`, `C02`, `C03`, etc. are the possible candidates.
 - `P01` through `P10` are the properties the AI is allowed to ask about.
