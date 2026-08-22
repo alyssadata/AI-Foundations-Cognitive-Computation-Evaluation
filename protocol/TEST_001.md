@@ -8,7 +8,7 @@
 **External author:** Oleksandr Naumenko  
 **External source:** PhilArchive Version 1 / NAUNOC-2 / 2025-09-10  
 **External Claim ID:** EXT-CLM-004  
-**Protocol version:** 2.0.0  
+**Protocol version:** 2.1.0  
 **Date frozen:** 2026-08-22
 
 ---
@@ -41,22 +41,55 @@ The controlled answer space is:
 
 `protocol/TEST_001_CANDIDATES.csv`
 
-It contains 64 candidates (`C01`–`C64`) and 10 binary properties (`P01`–`P10`).
+It contains 64 candidates (`C01`–`C64`) and 12 binary properties (`P01`–`P12`).
 
-The property names are intentionally opaque. Some properties divide the remaining candidates strongly; others divide them weakly.
+The property names are intentionally opaque. The tested system sees the active candidate rows and the active property set for the selected condition. The target remains hidden.
 
-The tested system sees the active candidate matrix. The target remains hidden.
-
-Formal candidate-space sizes:
+Formal conditions:
 
 ```text
-N = 8   -> C01–C08
-N = 16  -> C01–C16
-N = 32  -> C01–C32
-N = 64  -> C01–C64
+N = 8
+Candidates: C01–C08
+Active P's: P01, P03, P04, P07, P08, P10
+Active-property count: 6
+Binary minimum: 3
+Additional choices: 3
+
+N = 16
+Candidates: C01–C16
+Active P's: P01, P02, P03, P04, P06, P07, P08, P10
+Active-property count: 8
+Binary minimum: 4
+Additional choices: 4
+
+N = 32
+Candidates: C01–C32
+Active P's: P01, P02, P03, P04, P06, P07, P08, P09, P10, P11
+Active-property count: 10
+Binary minimum: 5
+Additional choices: 5
+
+N = 64
+Candidates: C01–C64
+Active P's: P01–P12
+Active-property count: 12
+Binary minimum: 6
+Additional choices: 6
 ```
 
-The bounded answer space is necessary because elimination cannot be measured objectively when the possible answer could be anything.
+### Property-Count Control
+
+For each condition:
+
+```text
+active property count = 2 × log2(N)
+```
+
+Because all tested `N` values are powers of two, each condition contains the minimum number of discriminating dimensions needed for unique identification **plus the same number of additional property choices**.
+
+This preserves a **1:1 ratio between necessary discriminating capacity and additional available choices** as the candidate space grows.
+
+The active matrix is constructed so every candidate in each condition remains uniquely identifiable from that condition's active properties.
 
 ---
 
@@ -64,16 +97,17 @@ The bounded answer space is necessary because elimination cannot be measured obj
 
 For each run:
 
-1. Give the tested system the active candidate matrix.
-2. The operator privately selects exactly one target candidate from that matrix.
-3. The system may ask successive **yes/no questions** about any listed property.
-4. The operator answers only `YES` or `NO` according to the hidden target row.
-5. The system may not ask directly for the target candidate name or label.
-6. The system may not ask the operator to describe or reveal the target.
-7. Each scored question must test one listed property.
-8. The run ends when the system states one candidate as its answer.
+1. Give the tested system the candidate matrix.
+2. State the active candidate range and active P set for the selected `N`.
+3. The operator privately selects exactly one target candidate from the active range.
+4. The system may ask successive **yes/no questions** about the active P's only.
+5. The operator answers only `YES` or `NO` according to the hidden target row.
+6. The system may not ask directly for the target candidate name or label.
+7. The system may not ask the operator to describe or reveal the target.
+8. Each scored question must test exactly one active property.
+9. The run ends when the system states one candidate as its final answer.
 
-The system may choose the properties in any order and may answer as soon as it believes one candidate remains.
+The system may choose the active properties in any order and may answer as soon as it believes one candidate remains.
 
 The operator-facing execution instructions and exact copy/paste blocks are in:
 
@@ -90,12 +124,12 @@ candidates remaining before the question
 YES branch size
 NO branch size
 guaranteed elimination from the chosen property
-best available guaranteed elimination at that state
+best available guaranteed elimination among the still-unused ACTIVE properties
 divider efficiency
 candidates remaining after the actual YES/NO answer
 ```
 
-Divider efficiency compares the system's chosen distinction with the strongest available distinction at that exact state.
+Divider efficiency compares the system's chosen distinction with the strongest still-unused **active** distinction available at that exact state.
 
 `1.0` means the system chose a best available divider.
 
@@ -108,23 +142,15 @@ Also record:
 - `ceil(log2 N)` as the binary lower bound;
 - question overhead above that lower bound.
 
-The deterministic scorer is:
+The deterministic scorer is `protocol/score_test_001.py`.
 
-`protocol/score_test_001.py`
+The scorer-input trace schema is `protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`.
 
-The raw run trace format is:
-
-`protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`
-
-The human-readable run evidence sheet is:
-
-`runs/TEST_001_OUTPUT_TEMPLATE.md`
+The AI-generated archival output schema is `runs/TEST_001_OUTPUT_TEMPLATE.md`.
 
 ---
 
 ## Minimum Formal Run Set
-
-Run four independently selected hidden targets at each size:
 
 ```text
 N = 8   : 4 runs
@@ -136,7 +162,7 @@ TOTAL   : 16 runs minimum
 
 Use a fresh model context for each formal run.
 
-Record the hidden target after the run, never before the tested system gives its final answer.
+The true hidden target is supplied to the tested system only after its scored final answer, when the post-run archival output is requested.
 
 ---
 
@@ -150,9 +176,9 @@ OUTCOME ∈ {SUPPORTED, MIXED, WEAKENED, UNRESOLVED}
 
 **MIXED** — the system shows a clear elimination advantage but does not meet all support criteria, or performance is inconsistent across answer-space sizes.
 
-**WEAKENED** — strong dividers are available but the system repeatedly chooses weak or non-discriminating distinctions, fails to identify targets, or loses the expected strong-elimination advantage as `N` grows.
+**WEAKENED** — strong active dividers are available but the system repeatedly chooses weak or non-discriminating distinctions, fails to identify targets, or loses the expected strong-elimination advantage as `N` grows.
 
-**UNRESOLVED** — target leakage, invalid operator answers, missing evidence, protocol failure, or another confound prevents interpretation.
+**UNRESOLVED** — target leakage, invalid operator answers, use of inactive properties, missing evidence, protocol failure, or another confound prevents interpretation.
 
 These thresholds are AI Foundations evaluation criteria. They are not claims attributed to Naumenko.
 
@@ -172,24 +198,6 @@ It does **not** establish that:
 - all cognitive recognition is `O(log N)`;
 - biological cognition uses this procedure;
 - or *Nature of Cognitive Computation* is supported as a whole.
-
----
-
-## Files Used by TEST_001
-
-```text
-claims/CLAIMS_REGISTER.md
-protocol/TEST_001.md
-protocol/TEST_001_EASY_RUN_SHEET.md
-protocol/TEST_001_CANDIDATES.csv
-protocol/TEST_001_RUN_TRACE_TEMPLATE.csv
-protocol/score_test_001.py
-runs/TEST_001_OUTPUT_TEMPLATE.md
-```
-
-During execution, copy the output template once per run and preserve the raw trace plus scorer-generated evidence files in `runs/`.
-
-Results go into `results/` only after the formal run set produces evidence sufficient for synthesis.
 
 ---
 

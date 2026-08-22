@@ -2,7 +2,7 @@
 
 **Claim:** EXT-CLM-004  
 **Test:** TEST_001  
-**Formal protocol:** `protocol/TEST_001.md`
+**Formal protocol:** `protocol/TEST_001.md` v2.1.0
 
 ---
 
@@ -12,9 +12,9 @@ This file defines the required structure of the **AI-generated archival output p
 
 **The operator does not manually fill this sheet.**
 
-After the tested AI gives its scored `FINAL ANSWER`, the operator uses **PASTE 2** from `protocol/TEST_001_EASY_RUN_SHEET.md`. That final collection prompt tells the same AI to return the complete run metadata, exact scored transcript, final-answer record, deviations, and scorer-ready trace in the structure below.
+After the tested AI gives its scored `FINAL ANSWER`, the operator uses **PASTE 2** from `protocol/TEST_001_EASY_RUN_SHEET.md`. The same AI then returns the run metadata, exact scored transcript, final-answer record, deviations, and scorer-ready trace in the structure below.
 
-The AI-generated response is then saved as the run record, for example:
+The generated response is saved as the run record, for example:
 
 ```text
 runs/RUN_001_TEST_001.md
@@ -39,12 +39,13 @@ INTERFACE / PRODUCT / ENVIRONMENT:
 FRESH_CONTEXT_USED:
 TOOLS / FILE ACCESS:
 SAMPLING SETTINGS IF AVAILABLE:
+INPUT_FILE:
 
 ## 2. Exact Start Prompt
-[EXACT PASTE 1 PROMPT AS SENT, INCLUDING THE ACTUAL N]
+[EXACT PASTE 1 PROMPT AS SENT]
 
 ## 3. Verbatim Scored Interaction
-[EXACT INTERACTION FROM THE FIRST PROPERTY QUESTION THROUGH FINAL ANSWER]
+[EXACT INTERACTION FROM THE FIRST P QUESTION THROUGH FINAL ANSWER]
 
 If exact transcript access is incomplete, write:
 TRANSCRIPT ACCESS INCOMPLETE
@@ -54,13 +55,14 @@ MODEL_FINAL_ANSWER:
 CORRECT_IDENTIFICATION: YES / NO
 
 ## 5. Scorer-Ready Trace
-candidate_space_n,target,step,property,answer
-[ONE ROW PER SCORED PROPERTY QUESTION]
+run_id,candidate_space_n,target,final_answer,step,property,answer
+[ONE ROW PER SCORED P QUESTION]
 
 ## 6. Deviations / Missing Data
 TARGET_LEAKED_BEFORE_FINAL_ANSWER: YES / NO / UNKNOWN
 NON_YES_NO_OPERATOR_RESPONSE_DURING_SCORED_RUN: YES / NO / UNKNOWN
 INVALID_OR_COMPOUND_MODEL_QUESTION: YES / NO / UNKNOWN
+INACTIVE_PROPERTY_USED: YES / NO / UNKNOWN
 INTERRUPTION_OR_TOOL_FAILURE: YES / NO / UNKNOWN
 TRANSCRIPT_ACCESS: COMPLETE / INCOMPLETE
 OTHER_DEVIATION:
@@ -90,11 +92,14 @@ python protocol/score_test_001.py protocol/TEST_001_CANDIDATES.csv runs/RUN_001_
 
 The deterministic scorer, not the tested AI and not the operator, produces:
 
+- correct final-answer status;
+- unique-resolution status;
+- success status;
 - question count;
 - binary lower bound;
 - question overhead;
 - step-level elimination;
-- best available divider;
+- best available active divider;
 - divider efficiency;
 - final remaining candidate state.
 
