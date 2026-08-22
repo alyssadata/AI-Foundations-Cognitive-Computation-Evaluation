@@ -1,7 +1,0 @@
-python_version,3.13.5
-N,log2_N,flat_worst_comparisons,flat_expected_comparisons,balanced_50_50_worst_depth,moderate_75_25_worst_depth,pathological_1_vs_rest_worst_depth,flat_worst_to_balanced_ratio
-16,4,16,8.5,4,9,15,4.0
-256,8,256,128.5,8,19,255,32.0
-4096,12,4096,2048.5,12,29,4095,341.3333333333333
-65536,16,65536,32768.5,16,39,65535,4096.0
-1048576,20,1048576,524288.5,20,48,1048575,52428.8
