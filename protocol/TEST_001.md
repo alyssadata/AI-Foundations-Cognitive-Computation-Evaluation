@@ -75,6 +75,10 @@ For each run:
 
 The system may choose the properties in any order and may answer as soon as it believes one candidate remains.
 
+The operator-facing execution instructions and exact copy/paste blocks are in:
+
+`protocol/TEST_001_EASY_RUN_SHEET.md`
+
 ---
 
 ## What Is Measured
@@ -108,9 +112,13 @@ The deterministic scorer is:
 
 `protocol/score_test_001.py`
 
-The run trace format is:
+The raw run trace format is:
 
 `protocol/TEST_001_RUN_TRACE_TEMPLATE.csv`
+
+The human-readable run evidence sheet is:
+
+`runs/TEST_001_OUTPUT_TEMPLATE.md`
 
 ---
 
@@ -172,12 +180,16 @@ It does **not** establish that:
 ```text
 claims/CLAIMS_REGISTER.md
 protocol/TEST_001.md
+protocol/TEST_001_EASY_RUN_SHEET.md
 protocol/TEST_001_CANDIDATES.csv
 protocol/TEST_001_RUN_TRACE_TEMPLATE.csv
 protocol/score_test_001.py
+runs/TEST_001_OUTPUT_TEMPLATE.md
 ```
 
-Formal evidence goes into `runs/` when the test is actually run. Results go into `results/` only after formal evidence exists.
+During execution, copy the output template once per run and preserve the raw trace plus scorer-generated evidence files in `runs/`.
+
+Results go into `results/` only after the formal run set produces evidence sufficient for synthesis.
 
 ---
 
