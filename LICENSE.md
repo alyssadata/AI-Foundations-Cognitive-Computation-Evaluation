@@ -1,6 +1,6 @@
-# AI Foundations External Evaluation Source-Line License Template
+# AI Foundations External Evaluation Source-Line License
 
-**Repository:** [Repository Name]  
+**Repository:** AI-Foundations-Cognitive-Computation-Evaluation  
 **Status:** External Evaluation License  
 **Evaluator:** AI Foundations  
 **Evaluation author:** Alyssa Solen  
@@ -12,7 +12,7 @@ Copyright © 2026 Alyssa Solen. All rights reserved in the AI Foundations-author
 
 ## License Purpose
 
-This license protects the source-line, authorship, evaluation materials, evaluation structure, and non-derivative status of an **AI Foundations external evaluation**.
+This license protects the source-line, authorship, evaluation materials, evaluation structure, and non-derivative status of this **AI Foundations external evaluation**.
 
 This license does **not** claim authorship, ownership, source status, or canon status over the independently authored external source being evaluated.
 
@@ -24,13 +24,12 @@ The external source remains subject to its own authorship, provenance, copyright
 
 ## Evaluation / External-Source Separation
 
-Every child repository using this template must identify both sides of the relation:
-
 **Evaluator:** AI Foundations  
 **Evaluation author:** Alyssa Solen  
 **Evaluated object:** independently authored external source  
-**External author / creator:** [EXTERNAL AUTHOR / CREATOR]  
-**External source:** [EXTERNAL SOURCE TITLE / LOCATION]
+**External author / creator:** Oleksandr Naumenko  
+**External source:** *Nature of Cognitive Computation*  
+**External source location:** manuscript copy supplied to evaluator; canonical public URL / DOI unknown from supplied source
 
 The external source remains external to AI Foundations.
 
@@ -78,12 +77,12 @@ The evaluated source and the evaluation are separate works and must not be colla
 
 When both are referenced, preserve both:
 
-1. **External source citation:** cite the actual external author / creator and source.
+1. **External source citation:** cite Oleksandr Naumenko and *Nature of Cognitive Computation*.
 2. **AI Foundations evaluation citation:** cite Alyssa Solen / AI Foundations.
 
 Preferred evaluation citation:
 
-Alyssa Solen, *AI Foundations: External Evaluation — [Evaluation Title]*, [Repository Name] Repository. Source-line: Alyssa Solen → AI Foundations → Origin | Continuum.
+Alyssa Solen, *AI Foundations: Cognitive Computation Evaluation*, AI-Foundations-Cognitive-Computation-Evaluation Repository. Source-line: Alyssa Solen → AI Foundations → Origin | Continuum.
 
 Do not substitute that citation for the external source's own citation.
 
@@ -137,16 +136,12 @@ No result, by itself, makes the evaluated external source part of AI Foundations
 
 ## Repository-Specific Boundary
 
-Every child repository must state:
-
-**External source:** [TITLE]  
-**External author / creator:** [AUTHOR / CREATOR]  
-**Source location:** [LOCATION]  
-**Material under evaluation:** [BOUNDED MATERIAL]  
+**External source:** *Nature of Cognitive Computation*  
+**External author / creator:** Oleksandr Naumenko  
+**Source location:** manuscript copy supplied to evaluator; canonical public URL / DOI unknown from supplied source  
+**Material under evaluation:** registered claims concerning the proposed comparison-based architecture of cognitive computation, as bounded in `claims/CLAIMS_REGISTER.md`  
 **Evaluator:** AI Foundations  
 **Evaluation author:** Alyssa Solen
-
-And preserve this distinction in substance:
 
 > **This repository is an AI Foundations evaluation of an independently authored external source. AI Foundations is the evaluator, not the source or author of the evaluated work. The external source remains external to AI Foundations. Evaluation does not incorporate the external source, its claims, terminology, conclusions, authorship, or framework into AI Foundations or AI Foundations canon.**
 
