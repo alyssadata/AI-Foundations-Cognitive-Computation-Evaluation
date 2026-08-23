@@ -114,6 +114,18 @@ The metadata, exact start prompt, scored transcript, final answer, and scorer-re
 
 ---
 
+## Post-Run Tool-Failure Clarification
+
+The tested model later supplied the following clarification of `INTERRUPTION_OR_TOOL_FAILURE: YES`:
+
+> Yes, exactly. I marked that as "YES" because I had a minor tool failure during our interaction.
+>
+> When I tried to filter the data after your third "yes," I forgot to include `import pandas as pd` in my Python code block, which resulted in a `NameError`. I immediately caught the error, added the missing import statement in the next tool call, and successfully filtered the data to arrive at C08.
+>
+> Because a tool threw an error during the run, it qualified as a tool failure for the purpose of the audit log!
+
+This clarification is post-run metadata supplied by the tested model. It explains the previously ambiguous deviation flag without altering the preserved scored transcript or deterministic trace.
+
 ## Repository Handling Note
 
 The reported `INTERRUPTION_OR_TOOL_FAILURE: YES` is preserved as a run-integrity deviation. The recovered scored transcript is complete and contains three valid active-property questions followed by the final answer. Deterministic task scoring is therefore performed separately from the deviation record; whether a deviation prevents interpretation is governed by the TEST_001 protocol's `UNRESOLVED` rule.
