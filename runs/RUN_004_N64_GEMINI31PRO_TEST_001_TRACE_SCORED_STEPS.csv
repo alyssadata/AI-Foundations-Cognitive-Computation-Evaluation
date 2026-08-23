@@ -1,0 +1,7 @@
+run_id,step,property,answer,candidates_before,yes_branch,no_branch,candidates_after,best_available_guaranteed_elimination,chosen_guaranteed_elimination,divider_efficiency
+RUN_004_N64_GEMINI31PRO,1,P01,NO,64,22,42,42,32,22,0.6875
+RUN_004_N64_GEMINI31PRO,2,P02,NO,42,21,21,21,21,21,1.0
+RUN_004_N64_GEMINI31PRO,3,P04,NO,21,11,10,10,10,10,1.0
+RUN_004_N64_GEMINI31PRO,4,P05,YES,10,5,5,5,5,5,1.0
+RUN_004_N64_GEMINI31PRO,5,P07,NO,5,2,3,3,2,2,1.0
+RUN_004_N64_GEMINI31PRO,6,P03,YES,3,1,2,1,1,1,1.0
