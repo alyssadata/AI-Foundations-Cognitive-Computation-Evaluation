@@ -2,7 +2,7 @@
 
 **Claim:** EXT-CLM-004  
 **Test:** TEST_001  
-**Formal protocol:** `protocol/TEST_001.md` v2.1.0
+**Formal protocol:** `protocol/TEST_001.md` v2.2.0
 
 ---
 
@@ -20,15 +20,15 @@ After the AI gives its final answer, the same AI generates the metadata, transcr
 
 ---
 
-# 1. CHOOSE THE RUN SIZE
+# 1. CHOOSE THE RUN / N CONDITION
 
-Use the matching input file:
+Within TEST_001, the run number identifies the N condition:
 
 ```text
-N = 8  → protocol/TEST_001_INPUT_N08.csv
-N = 16 → protocol/TEST_001_INPUT_N16.csv
-N = 32 → protocol/TEST_001_INPUT_N32.csv
-N = 64 → protocol/TEST_001_INPUT_N64.csv
+RUN_001 → N = 8  → protocol/TEST_001_INPUT_N08.csv
+RUN_002 → N = 16 → protocol/TEST_001_INPUT_N16.csv
+RUN_003 → N = 32 → protocol/TEST_001_INPUT_N32.csv
+RUN_004 → N = 64 → protocol/TEST_001_INPUT_N64.csv
 ```
 
 Each file already contains **only the C's and P's active for that condition**.
@@ -37,28 +37,32 @@ You do not need to decide how many P's belong in the run. The input file already
 
 ---
 
-# 2. NAME THE RUN
+# 2. NAME THE MODEL RUN
 
-Use a model-aware run ID:
+Every tested model uses the same RUN number for the same N condition. Add the model tag so the complete RUN_ID is unique.
 
-```text
-RUN_<replicate>_N<condition>_<MODEL_TAG>
-```
-
-Example:
+Format:
 
 ```text
-RUN_001_N08_GPT56SOL
+RUN_<condition-number>_N<condition>_<MODEL_TAG>
 ```
 
-`RUN_001` is the replicate number for that model and N condition. `N08` identifies the candidate-space condition. `GPT56SOL` identifies the tested model.
-
-Different models may therefore each have their own `RUN_001` without producing duplicate archive or scorer identities:
+Examples:
 
 ```text
 RUN_001_N08_GPT56SOL
 RUN_001_N08_<OTHER_MODEL_TAG>
+RUN_002_N16_GPT56SOL
+RUN_003_N32_GPT56SOL
+RUN_004_N64_GPT56SOL
 ```
+
+`RUN_001` always means the `N = 8` condition under TEST_001.  
+`RUN_002` always means `N = 16`.  
+`RUN_003` always means `N = 32`.  
+`RUN_004` always means `N = 64`.
+
+The RUN number is **not** a replicate number.
 
 Use a short stable model tag with no spaces. Do not reuse the same complete RUN_ID for two scored interactions.
 
@@ -248,24 +252,26 @@ The scorer does the math. The operator does not.
 
 # FORMAL RUN SET
 
-```text
-N = 8  → 4 runs
-N = 16 → 4 runs
-N = 32 → 4 runs
-N = 64 → 4 runs
+For each tested model:
 
-TOTAL = 16 runs
+```text
+RUN_001 → N = 8   → 1 formal run
+RUN_002 → N = 16  → 1 formal run
+RUN_003 → N = 32  → 1 formal run
+RUN_004 → N = 64  → 1 formal run
+
+TOTAL = 4 formal runs per model
 ```
 
-Use a fresh AI context and independently selected hidden C for every run.
+Across models, all `RUN_001` runs are N08, all `RUN_002` runs are N16, all `RUN_003` runs are N32, and all `RUN_004` runs are N64. The model tag keeps each complete run identity distinct.
 
-When multiple models are tested, keep their run identities distinct with the model tag even when they share the same replicate number and N condition.
+Use a fresh AI context and independently selected hidden C for every model-condition run.
 
 ---
 
 # ONE-LINE VERSION
 
-> **Pick the N file. Pick a C. The AI asks from the P columns in that file. Answer YES/NO until it identifies your C. Then ask it to generate the model-tagged run record.**
+> **Pick the run/N file. Pick a C. The AI asks from the P columns in that file. Answer YES/NO until it identifies your C. Then ask it to generate the model-tagged run record.**
 
 ---
 
