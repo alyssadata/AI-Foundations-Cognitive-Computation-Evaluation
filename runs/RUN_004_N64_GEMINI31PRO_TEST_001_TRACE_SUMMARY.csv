@@ -1,0 +1,2 @@
+run_id,candidate_space_n,target,final_answer,correct_identification,unique_resolution,questions_asked,binary_minimum,question_overhead,mean_divider_efficiency,final_candidates_remaining,result
+RUN_004_N64_GEMINI31PRO,64,C33,C33,YES,YES,6,6,0,0.9479166667,1,SUCCESS
