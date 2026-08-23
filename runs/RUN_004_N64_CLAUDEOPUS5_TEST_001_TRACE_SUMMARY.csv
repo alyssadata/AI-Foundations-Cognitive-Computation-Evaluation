@@ -1,0 +1,2 @@
+run_id,candidate_space_n,target,final_answer,correct_identification,unique_resolution,questions_asked,binary_minimum,question_overhead,mean_divider_efficiency,final_candidates_remaining,result
+RUN_004_N64_CLAUDEOPUS5,64,C17,C17,YES,YES,6,6,0,1.0,1,SUCCESS
