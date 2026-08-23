@@ -1,0 +1,4 @@
+run_id,candidate_space_n,target,final_answer,step,property,answer,candidates_before,yes_branch,no_branch,worst_case_guaranteed_elimination,best_available_guaranteed_elimination,divider_efficiency_ratio,candidates_after_actual_answer
+RUN_001_N08_GROK45,8,C01,C01,1,P04,NO,8,4,4,0.5,0.5,1.0,4
+RUN_001_N08_GROK45,8,C01,C01,2,P01,YES,4,2,2,0.5,0.5,1.0,2
+RUN_001_N08_GROK45,8,C01,C01,3,P03,YES,2,1,1,0.5,0.5,1.0,1
