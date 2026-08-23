@@ -5,6 +5,7 @@
 **Evaluator:** AI Foundations  
 **Evaluation author:** Alyssa Solen  
 **Evaluation repository:** AI-Foundations-Cognitive-Computation-Evaluation  
+**Public repository:** https://github.com/alyssadata/AI-Foundations-Cognitive-Computation-Evaluation  
 **Report status:** First completed evaluation  
 
 ---
@@ -268,15 +269,29 @@ Each completed test can therefore stand as its own evaluation section, while a l
 
 ---
 
-## 12. Evidence
+## 12. Evidence and Reproducibility
+
+The complete public evaluation repository is available at:
+
+**https://github.com/alyssadata/AI-Foundations-Cognitive-Computation-Evaluation**
+
+Readers can use the repository to inspect the source record, extracted claims, frozen protocol, candidate/property matrices, full model-run transcripts, normalized traces, deterministic step scores, condition summaries, and the completed TEST_001 evaluation.
+
+The repository is intended to make the reported result inspectable and reproducible. A reader wishing to reproduce TEST_001 can use the published protocol and input matrices, conduct fresh runs under the same rules, preserve the resulting transcript and metadata, and score the run using the repository's deterministic scoring materials. Reproduction results can then be compared directly with the archived formal runs.
 
 Claims register:
 
 - `claims/CLAIMS_REGISTER.md`
 
-Protocol:
+Protocol and reproducibility materials:
 
 - `protocol/TEST_001.md`
+- `protocol/TEST_001_EASY_RUN_SHEET.md`
+- `protocol/TEST_001_INPUT_N08.csv`
+- `protocol/TEST_001_INPUT_N16.csv`
+- `protocol/TEST_001_INPUT_N32.csv`
+- `protocol/TEST_001_INPUT_N64.csv`
+- `protocol/score_test_001.py`
 
 Condition summaries:
 
