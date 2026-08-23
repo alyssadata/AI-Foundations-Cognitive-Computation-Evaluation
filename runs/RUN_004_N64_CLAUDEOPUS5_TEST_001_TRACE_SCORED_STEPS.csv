@@ -1,0 +1,7 @@
+run_id,step,property,answer,candidates_before,yes_branch,no_branch,candidates_after,best_available_guaranteed_elimination,chosen_guaranteed_elimination,divider_efficiency
+RUN_004_N64_CLAUDEOPUS5,1,P02,NO,64,32,32,32,32,32,1.0
+RUN_004_N64_CLAUDEOPUS5,2,P04,NO,32,16,16,16,16,16,1.0
+RUN_004_N64_CLAUDEOPUS5,3,P05,NO,16,8,8,8,8,8,1.0
+RUN_004_N64_CLAUDEOPUS5,4,P07,NO,8,4,4,4,4,4,1.0
+RUN_004_N64_CLAUDEOPUS5,5,P09,YES,4,2,2,2,2,2,1.0
+RUN_004_N64_CLAUDEOPUS5,6,P10,NO,2,1,1,1,1,1,1.0
