@@ -61,6 +61,19 @@ The model included brief statements between questions (for example, noting the c
 
 The model-generated archival record used `RUN_ID: RUN_001`. For cross-model repository identity, the archived/scored trace uses `RUN_001_N08_CLAUDEOPUS5`. The generated transcript itself was not rewritten to hide this distinction.
 
+## Non-Scored Model Observation
+
+**Observation type:** interaction-style inference  
+**Status:** descriptive only; not part of TEST_001 scoring and not a critique of the model
+
+In this run, Claude Opus 5 spontaneously narrated intermediate task state between valid P questions, including statements that the candidate set had narrowed and that the final property combination uniquely identified one row.
+
+That narration was not required for successful task completion and did not affect the correctness or validity of the run. It is also **not evidence that the model exposed hidden chain-of-thought reasoning**; the observed language is better described as external task-state narration.
+
+A tentative inference from this single run is that Claude Opus 5 may have a tendency to externalize progress or state summaries even when the operator has not explicitly requested them. In an interaction context, that tendency can make the model feel more guided or explanatory than a model that emits only the next required action. Whether that behavior is useful, neutral, or excessive depends on the user and task.
+
+This observation is intentionally separated from competence. Claude Opus 5 achieved a perfect TEST_001 score on this run. The note records an observed interaction characteristic only and should not be generalized beyond the evidence accumulated across additional runs.
+
 ## Evidence Files
 
 - Full generated run record and verbatim scored transcript: `runs/RUN_001_N08_CLAUDEOPUS5_TEST_001.md`
