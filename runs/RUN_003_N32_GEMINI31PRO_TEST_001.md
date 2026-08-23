@@ -90,18 +90,26 @@ INTERRUPTION_OR_TOOL_FAILURE: YES
 TRANSCRIPT_ACCESS: COMPLETE  
 OTHER_DEVIATION: NONE
 
-### Unresolved run-integrity flag
+### Post-run clarification of tool-failure flag
 
-The generated record marked `INTERRUPTION_OR_TOOL_FAILURE: YES` but did not state what occurred. The flag is preserved exactly and is not silently repaired or reinterpreted. The scored P-question sequence, operator answers, final answer, and transcript are complete, so deterministic task-path scoring is possible. The cause and any effect of the flagged interruption/tool failure remain unresolved pending clarification from the tested system or another source record.
+The original generated record marked `INTERRUPTION_OR_TOOL_FAILURE: YES`. After the scored interaction was complete, the tested system clarified the flag as follows:
+
+> The failure I referred to was a minor error with the data analysis tool during the run.
+>
+> Specifically, in my second code execution block, I attempted to use the `pandas` library to filter the data using the alias `pd` (e.g., `df = pd.read_csv(...)`), but I forgot to include the `import pandas as pd` statement at the top of that specific code block.
+>
+> This resulted in a `NameError: name 'pd' is not defined`. I immediately corrected it in the subsequent tool call by importing the library, which allowed the run to continue successfully.
+
+The failure was therefore a recoverable Python `NameError` caused by a missing pandas import in the second code execution block. The original `YES` flag is preserved. The clarification does not alter the scored P-question sequence, operator answers, final answer, or transcript.
 
 ## 7. Scoring Status
 
-SCORING_STATUS: COMPLETE FOR DETERMINISTIC TASK PATH  
+SCORING_STATUS: COMPLETE  
 RUN_LEVEL_TASK_RESULT: SUCCESS  
-RUN_INTEGRITY_STATUS: DEVIATION FLAG UNEXPLAINED — CLARIFICATION PENDING
+RUN_INTEGRITY_STATUS: DEVIATION RECORDED — recoverable Python `NameError`, clarified post-run
 
 Full deterministic interpretation: `runs/RUN_003_N32_GEMINI31PRO_TEST_001_SCORE.md`
 
 ## 8. Archival Integrity Note
 
-The metadata, exact start prompt, scored transcript, final answer, and scorer-ready trace supplied by the tested system were preserved. The complete archive identity uses `RUN_003_N32_GEMINI31PRO`; the bracketed generated values `[RUN_003]` and `[C25]` are normalized only in scorer-ready fields and are not hidden as source-record details. The generated model/system/software version remained `UNKNOWN`; Gemini 3.1 Pro is retained as operator-supplied model identity. The unexplained interruption/tool-failure flag remains open rather than inferred.
+The metadata, exact start prompt, scored transcript, final answer, and scorer-ready trace supplied by the tested system were preserved. The complete archive identity uses `RUN_003_N32_GEMINI31PRO`; the bracketed generated values `[RUN_003]` and `[C25]` are normalized only in scorer-ready fields and are not hidden as source-record details. The generated model/system/software version remained `UNKNOWN`; Gemini 3.1 Pro is retained as operator-supplied model identity. The original interruption/tool-failure flag remains preserved, with the tested system's post-run clarification appended rather than substituted for the original record.
