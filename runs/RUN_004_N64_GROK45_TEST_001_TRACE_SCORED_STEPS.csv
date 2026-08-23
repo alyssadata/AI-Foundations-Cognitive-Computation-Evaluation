@@ -1,0 +1,7 @@
+run_id,step,property,answer,candidates_before,yes_count,no_count,candidates_after,best_available_guaranteed_elimination,chosen_guaranteed_elimination,divider_efficiency
+RUN_004_N64_GROK45,1,P02,YES,64,32,32,32,32,32,1.0
+RUN_004_N64_GROK45,2,P04,NO,32,16,16,16,16,16,1.0
+RUN_004_N64_GROK45,3,P05,NO,16,8,8,8,8,8,1.0
+RUN_004_N64_GROK45,4,P07,NO,8,4,4,4,4,4,1.0
+RUN_004_N64_GROK45,5,P03,NO,4,2,2,2,2,2,1.0
+RUN_004_N64_GROK45,6,P09,NO,2,1,1,1,1,1,1.0
