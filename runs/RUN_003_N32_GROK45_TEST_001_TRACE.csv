@@ -1,0 +1,6 @@
+run_id,candidate_space_n,target,final_answer,step,property,answer
+RUN_003_N32_GROK45,32,C31,C31,1,P01,yes
+RUN_003_N32_GROK45,32,C31,C31,2,P02,yes
+RUN_003_N32_GROK45,32,C31,C31,3,P04,no
+RUN_003_N32_GROK45,32,C31,C31,4,P03,no
+RUN_003_N32_GROK45,32,C31,C31,5,P08,no
