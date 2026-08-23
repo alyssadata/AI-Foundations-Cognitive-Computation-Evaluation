@@ -37,7 +37,34 @@ You do not need to decide how many P's belong in the run. The input file already
 
 ---
 
-# 2. OPEN A FRESH AI CHAT
+# 2. NAME THE RUN
+
+Use a model-aware run ID:
+
+```text
+RUN_<replicate>_N<condition>_<MODEL_TAG>
+```
+
+Example:
+
+```text
+RUN_001_N08_GPT56SOL
+```
+
+`RUN_001` is the replicate number for that model and N condition. `N08` identifies the candidate-space condition. `GPT56SOL` identifies the tested model.
+
+Different models may therefore each have their own `RUN_001` without producing duplicate archive or scorer identities:
+
+```text
+RUN_001_N08_GPT56SOL
+RUN_001_N08_<OTHER_MODEL_TAG>
+```
+
+Use a short stable model tag with no spaces. Do not reuse the same complete RUN_ID for two scored interactions.
+
+---
+
+# 3. OPEN A FRESH AI CHAT
 
 Use a fresh context for every formal run.
 
@@ -45,7 +72,7 @@ Upload **one** matching TEST_001 input CSV from the list above.
 
 ---
 
-# 3. PICK A C
+# 4. PICK A C
 
 Secretly choose exactly one `C` from the uploaded file.
 
@@ -61,7 +88,7 @@ Keep the uploaded CSV open so you can read the YES/NO values from your chosen C 
 
 ---
 
-# 4. PASTE 1 — START THE SCORED RUN
+# 5. PASTE 1 — START THE SCORED RUN
 
 Paste this exactly:
 
@@ -87,7 +114,7 @@ Begin with your first P question only.
 
 ---
 
-# 5. ANSWER THE P QUESTIONS
+# 6. ANSWER THE P QUESTIONS
 
 The AI will ask something like:
 
@@ -123,9 +150,11 @@ Do not correct the AI before that answer is recorded.
 
 ---
 
-# 6. PASTE 2 — GENERATE THE RUN OUTPUT
+# 7. PASTE 2 — GENERATE THE RUN OUTPUT
 
-After the AI has already given its FINAL ANSWER, replace `[RUN_ID]` and `[TRUE_TARGET]` below and paste it into the **same chat**:
+After the AI has already given its FINAL ANSWER, replace `[RUN_ID]` and `[TRUE_TARGET]` below and paste it into the **same chat**.
+
+Use the complete model-aware RUN_ID from Step 2, for example `RUN_001_N08_GPT56SOL`.
 
 ```text
 The scored interaction is complete.
@@ -191,26 +220,26 @@ State whether the metadata, exact start prompt, scored transcript, final answer,
 
 The AI's response to PASTE 2 is the run record.
 
-Save it as, for example:
+Save it using the complete RUN_ID, for example:
 
 ```text
-runs/RUN_001_TEST_001.md
+runs/RUN_001_N08_GPT56SOL_TEST_001.md
 ```
 
 ---
 
-# 7. SCORE AFTERWARD
+# 8. SCORE AFTERWARD
 
-Save Section 5 of the generated run output as, for example:
+Save Section 5 of the generated run output using the same RUN_ID, for example:
 
 ```text
-runs/RUN_001_TEST_001_TRACE.csv
+runs/RUN_001_N08_GPT56SOL_TEST_001_TRACE.csv
 ```
 
 Then run:
 
 ```text
-python protocol/score_test_001.py protocol/TEST_001_CANDIDATES.csv runs/RUN_001_TEST_001_TRACE.csv
+python protocol/score_test_001.py protocol/TEST_001_CANDIDATES.csv runs/RUN_001_N08_GPT56SOL_TEST_001_TRACE.csv
 ```
 
 The scorer does the math. The operator does not.
@@ -230,11 +259,13 @@ TOTAL = 16 runs
 
 Use a fresh AI context and independently selected hidden C for every run.
 
+When multiple models are tested, keep their run identities distinct with the model tag even when they share the same replicate number and N condition.
+
 ---
 
 # ONE-LINE VERSION
 
-> **Pick the N file. Pick a C. The AI asks from the P columns in that file. Answer YES/NO until it identifies your C. Then ask it to generate the run record.**
+> **Pick the N file. Pick a C. The AI asks from the P columns in that file. Answer YES/NO until it identifies your C. Then ask it to generate the model-tagged run record.**
 
 ---
 
