@@ -1,0 +1,5 @@
+run_id,candidate_space_n,target,final_answer,step,property,answer
+RUN_002_N16_CLAUDEOPUS5,16,C11,C11,1,P02,yes
+RUN_002_N16_CLAUDEOPUS5,16,C11,C11,2,P07,no
+RUN_002_N16_CLAUDEOPUS5,16,C11,C11,3,P10,yes
+RUN_002_N16_CLAUDEOPUS5,16,C11,C11,4,P04,no
