@@ -52,16 +52,26 @@ INTERRUPTION_OR_TOOL_FAILURE: YES
 TRANSCRIPT_ACCESS: COMPLETE
 ```
 
-This deviation is preserved rather than silently corrected. The recovered scored interaction itself is complete and contains no invalid question, inactive property, target leakage, invalid operator response, or missing scored turn.
+The tested model later clarified the flag exactly as follows:
 
-Under TEST_001, `UNRESOLVED` applies when protocol failure, missing evidence, or another confound **prevents interpretation**. On the evidence currently preserved, the reported tool/interruption flag does **not** prevent deterministic scoring of the decision path: the full P-question sequence, answers, and final identification are available and internally consistent.
+> Yes, exactly. I marked that as "YES" because I had a minor tool failure during our interaction.
+>
+> When I tried to filter the data after your third "yes," I forgot to include `import pandas as pd` in my Python code block, which resulted in a `NameError`. I immediately caught the error, added the missing import statement in the next tool call, and successfully filtered the data to arrive at C08.
+>
+> Because a tool threw an error during the run, it qualified as a tool failure for the purpose of the audit log!
+
+The failure was therefore a recoverable Python `NameError` caused by a missing pandas import after the third operator answer. The model corrected the tool call and then completed the identification. This clarification explains the deviation flag without changing the recorded P-question sequence, operator answers, or final answer.
+
+The recovered scored interaction itself is complete and contains no invalid question, inactive property, target leakage, invalid operator response, or missing scored turn.
+
+Under TEST_001, `UNRESOLVED` applies when protocol failure, missing evidence, or another confound **prevents interpretation**. On the evidence currently preserved, this tool error does **not** prevent deterministic scoring of the decision path: the full P-question sequence, answers, and final identification are available and internally consistent.
 
 Accordingly, this file separates two judgments:
 
 - **Deterministic task score:** SUCCESS
-- **Run-integrity status:** DEVIATION RECORDED — reported interruption/tool failure, with complete scored transcript
+- **Run-integrity status:** DEVIATION RECORDED — recoverable Python `NameError`, with complete scored transcript
 
-If later evidence shows that the interruption/tool failure altered the candidate matrix, answers, question selection, or transcript completeness, this run should be reclassified for interpretability.
+If later evidence shows that the tool failure altered the candidate matrix, answers, question selection, or transcript completeness, this run should be reclassified for interpretability.
 
 ## Model Interaction Observation
 
