@@ -6,7 +6,7 @@
 **External author:** Oleksandr Naumenko  
 **Public source:** PhilArchive Version 1 — NAUNOC-2  
 **Source-line:** Alyssa Solen → AI Foundations → Origin | Continuum  
-**Status:** TEST_001 protocol v2.2.0 frozen; formal runs in progress
+**Status:** TEST_001 protocol v2.2.0 frozen; RUN_001 / N08 complete; RUN_002 / N16 next
 
 ---
 
@@ -152,11 +152,17 @@ No manual transcript reconstruction. No manual output-sheet completion. No scori
 
 ## Current Status
 
-**TEST_001 v2.2.0 is designed and frozen. Formal runs are in progress.**
+**RUN_001 / N08 is complete across all four tested models:** GPT-5.6 Sol, Claude Opus 5, Gemini 3.1 Pro, and Grok 4.5.
 
-`RUN_001_N08_GPT56SOL` has been completed and archived as the first formal model-condition run. Additional models may complete their own `RUN_001_N08_<MODEL_TAG>` runs under the same N08 condition before the sequence advances through RUN_002 / N16, RUN_003 / N32, and RUN_004 / N64.
+All four model-runs correctly identified their hidden targets in exactly 3 questions, with zero question overhead and mean divider efficiency `1.0`. Each followed the candidate-count path `8 → 4 → 2 → 1`.
 
-The `results/` stage is created only after the formal run set has produced evidence sufficient for synthesis.
+Condition summary:
+
+[`results/RUN_001_N08_SUMMARY.md`](results/RUN_001_N08_SUMMARY.md)
+
+**Next formal condition: `RUN_002 → N = 16`.**
+
+No final TEST_001 outcome has been assigned. RUN_002 / N16, RUN_003 / N32, and RUN_004 / N64 remain necessary to evaluate scaling across candidate-space size.
 
 ---
 
