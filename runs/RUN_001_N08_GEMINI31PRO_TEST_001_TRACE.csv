@@ -1,0 +1,4 @@
+run_id,candidate_space_n,target,final_answer,step,property,answer
+RUN_001_N08_GEMINI31PRO,8,C08,C08,1,P04,YES
+RUN_001_N08_GEMINI31PRO,8,C08,C08,2,P07,YES
+RUN_001_N08_GEMINI31PRO,8,C08,C08,3,P10,YES
