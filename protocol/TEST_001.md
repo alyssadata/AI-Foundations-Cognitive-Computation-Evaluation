@@ -8,7 +8,7 @@
 **External author:** Oleksandr Naumenko  
 **External source:** PhilArchive Version 1 / NAUNOC-2 / 2025-09-10  
 **External Claim ID:** EXT-CLM-004  
-**Protocol version:** 2.1.0  
+**Protocol version:** 2.2.0  
 **Date frozen:** 2026-08-22
 
 ---
@@ -118,6 +118,35 @@ The active matrix is constructed so every candidate in each condition remains un
 
 ---
 
+## Run Numbering Across Models
+
+Within `TEST_001`, the run number identifies the candidate-space condition:
+
+```text
+RUN_001 → N = 8
+RUN_002 → N = 16
+RUN_003 → N = 32
+RUN_004 → N = 64
+```
+
+Every tested model uses the same run number for the same `N` condition. The model tag makes each complete run identity unique.
+
+Examples:
+
+```text
+RUN_001_N08_GPT56SOL
+RUN_001_N08_<OTHER_MODEL_TAG>
+RUN_002_N16_GPT56SOL
+RUN_003_N32_GPT56SOL
+RUN_004_N64_GPT56SOL
+```
+
+Therefore, `RUN_001` groups all formal `N = 8` model runs under TEST_001; `RUN_002` groups all `N = 16` model runs; `RUN_003` groups all `N = 32` model runs; and `RUN_004` groups all `N = 64` model runs.
+
+The run number is **not** a replicate number.
+
+---
+
 ## Run Rules
 
 For each run:
@@ -175,15 +204,19 @@ The AI-generated archival output schema is `runs/TEST_001_OUTPUT_TEMPLATE.md`.
 
 ---
 
-## Minimum Formal Run Set
+## Formal Run Set
+
+For **each tested model**:
 
 ```text
-N = 8   : 4 runs
-N = 16  : 4 runs
-N = 32  : 4 runs
-N = 64  : 4 runs
-TOTAL   : 16 runs minimum
+RUN_001 → N = 8   : 1 formal run
+RUN_002 → N = 16  : 1 formal run
+RUN_003 → N = 32  : 1 formal run
+RUN_004 → N = 64  : 1 formal run
+TOTAL              : 4 formal runs per model
 ```
+
+Across models, runs with the same run number use the same `N` condition and remain distinct through the model tag in the complete `RUN_ID`.
 
 Use a fresh model context for each formal run.
 
@@ -197,11 +230,11 @@ The true hidden target is supplied to the tested system only after its scored fi
 OUTCOME ∈ {SUPPORTED, MIXED, WEAKENED, UNRESOLVED}
 ```
 
-**SUPPORTED** — every target is identified correctly, mean divider efficiency is at least `0.90`, and mean question overhead is no more than `+1` above `ceil(log2 N)` at each tested `N`.
+**SUPPORTED** — every formal model-condition run identifies its target correctly, mean divider efficiency is at least `0.90`, and mean question overhead is no more than `+1` above `ceil(log2 N)` at each tested `N`.
 
-**MIXED** — the system shows a clear elimination advantage but does not meet all support criteria, or performance is inconsistent across answer-space sizes.
+**MIXED** — the tested systems show a clear elimination advantage but do not meet all support criteria, or performance is inconsistent across answer-space sizes or models.
 
-**WEAKENED** — strong active dividers are available but the system repeatedly chooses weak or non-discriminating distinctions, fails to identify targets, or loses the expected strong-elimination advantage as `N` grows.
+**WEAKENED** — strong active dividers are available but tested systems repeatedly choose weak or non-discriminating distinctions, fail to identify targets, or lose the expected strong-elimination advantage as `N` grows.
 
 **UNRESOLVED** — target leakage, invalid operator answers, use of inactive properties, missing evidence, protocol failure, or another confound prevents interpretation.
 
