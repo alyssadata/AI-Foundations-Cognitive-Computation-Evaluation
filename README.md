@@ -6,7 +6,7 @@
 **External author:** Oleksandr Naumenko  
 **Public source:** PhilArchive Version 1 — NAUNOC-2  
 **Source-line:** Alyssa Solen → AI Foundations → Origin | Continuum  
-**Status:** TEST_001 protocol v2.1.0 frozen; formal runs pending
+**Status:** TEST_001 protocol v2.2.0 frozen; formal runs in progress
 
 ---
 
@@ -58,6 +58,31 @@ The operator does **not** manually fill an output sheet or calculate scores duri
 
 ---
 
+## TEST_001 Run Map
+
+The run number identifies the N condition across all tested models:
+
+```text
+RUN_001 → N = 8
+RUN_002 → N = 16
+RUN_003 → N = 32
+RUN_004 → N = 64
+```
+
+Every model follows the same four-run sequence. The complete run ID adds the model tag so parallel runs remain unique, for example:
+
+```text
+RUN_001_N08_GPT56SOL
+RUN_001_N08_<OTHER_MODEL_TAG>
+RUN_002_N16_GPT56SOL
+RUN_003_N32_GPT56SOL
+RUN_004_N64_GPT56SOL
+```
+
+The run number is **not** a replicate number.
+
+---
+
 ## Condition-Specific Input Files
 
 Use **one** input file per run:
@@ -89,10 +114,10 @@ The full backend matrix is [`protocol/TEST_001_CANDIDATES.csv`](protocol/TEST_00
 
 This defines the structure the tested AI generates after the scored interaction. It is **not** a manual worksheet.
 
-The generated response is saved as the actual run record, for example:
+The generated response is saved as the actual model-tagged run record, for example:
 
 ```text
-runs/RUN_001_TEST_001.md
+runs/RUN_001_N08_GPT56SOL_TEST_001.md
 ```
 
 The scorer-ready trace uses:
@@ -108,14 +133,14 @@ The deterministic scorer is [`protocol/score_test_001.py`](protocol/score_test_0
 ## Actual Operator Flow
 
 ```text
-choose N
+choose RUN / N condition
 → upload matching TEST_001_INPUT_Nxx.csv
 → privately pick one C
 → send PASTE 1
 → AI asks from the P columns in that file
 → answer only YES/NO from your chosen C row
 → AI gives FINAL ANSWER
-→ send PASTE 2 with true C
+→ send PASTE 2 with model-tagged RUN_ID + true C
 → AI generates metadata + exact transcript + scorer-ready trace
 → save generated run output
 → score trace afterward
@@ -127,9 +152,9 @@ No manual transcript reconstruction. No manual output-sheet completion. No scori
 
 ## Current Status
 
-**TEST_001 v2.1.0 is designed and frozen. No formal TEST_001 results have been declared yet.**
+**TEST_001 v2.2.0 is designed and frozen. Formal runs are in progress.**
 
-The `runs/` folder currently contains the generated-output schema. Actual run evidence is added only when a formal run is completed.
+`RUN_001_N08_GPT56SOL` has been completed and archived as the first formal model-condition run. Additional models may complete their own `RUN_001_N08_<MODEL_TAG>` runs under the same N08 condition before the sequence advances through RUN_002 / N16, RUN_003 / N32, and RUN_004 / N64.
 
 The `results/` stage is created only after the formal run set has produced evidence sufficient for synthesis.
 
