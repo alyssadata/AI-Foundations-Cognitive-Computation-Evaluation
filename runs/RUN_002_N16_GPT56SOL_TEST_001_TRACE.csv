@@ -1,0 +1,5 @@
+run_id,candidate_space_n,target,final_answer,step,property,answer
+RUN_002_N16_GPT56SOL,16,C03,C03,1,P02,no
+RUN_002_N16_GPT56SOL,16,C03,C03,2,P04,no
+RUN_002_N16_GPT56SOL,16,C03,C03,3,P01,no
+RUN_002_N16_GPT56SOL,16,C03,C03,4,P07,no
