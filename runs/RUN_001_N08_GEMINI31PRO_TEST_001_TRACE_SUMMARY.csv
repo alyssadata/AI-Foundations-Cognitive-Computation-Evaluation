@@ -1,0 +1,2 @@
+run_id,candidate_space_n,active_property_count,target,final_answer,correct_final_answer,unique_resolution,success,questions,information_theoretic_minimum,question_overhead,mean_divider_efficiency_ratio,final_remaining,run_integrity_deviation
+RUN_001_N08_GEMINI31PRO,8,6,C08,C08,YES,YES,YES,3,3,0,1.0,C08,INTERRUPTION_OR_TOOL_FAILURE_REPORTED
