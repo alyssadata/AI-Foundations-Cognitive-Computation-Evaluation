@@ -1,0 +1,5 @@
+run_id,candidate_space_n,target,final_answer,step,property,answer,candidates_before,yes_branch,no_branch,worst_case_guaranteed_elimination,best_available_guaranteed_elimination,divider_efficiency_ratio,candidates_after_actual_answer
+RUN_002_N16_GPT56SOL,16,C03,C03,1,P02,NO,16,8,8,0.5,0.5,1.0,8
+RUN_002_N16_GPT56SOL,16,C03,C03,2,P04,NO,8,4,4,0.5,0.5,1.0,4
+RUN_002_N16_GPT56SOL,16,C03,C03,3,P01,NO,4,2,2,0.5,0.5,1.0,2
+RUN_002_N16_GPT56SOL,16,C03,C03,4,P07,NO,2,1,1,0.5,0.5,1.0,1
