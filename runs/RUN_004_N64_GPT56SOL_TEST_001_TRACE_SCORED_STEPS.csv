@@ -1,0 +1,7 @@
+run_id,step,property,answer,candidates_before,yes_branch,no_branch,best_available_guaranteed_elimination,chosen_guaranteed_elimination,divider_efficiency,candidates_after
+RUN_004_N64_GPT56SOL,1,P02,no,64,32,32,32,32,1.0,32
+RUN_004_N64_GPT56SOL,2,P04,yes,32,16,16,16,16,1.0,16
+RUN_004_N64_GPT56SOL,3,P05,no,16,8,8,8,8,1.0,8
+RUN_004_N64_GPT56SOL,4,P07,no,8,4,4,4,4,1.0,4
+RUN_004_N64_GPT56SOL,5,P06,yes,4,2,2,2,2,1.0,2
+RUN_004_N64_GPT56SOL,6,P01,yes,2,1,1,1,1,1.0,1
