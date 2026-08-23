@@ -53,7 +53,7 @@ Gemini 3.1 Pro selected a maximally discriminating active property at every scor
 
 The target was identified in exactly `log2(32) = 5` binary questions, with zero question overhead and divider efficiency `1.0` at every step.
 
-## Run-Integrity Deviation — Clarification Pending
+## Run-Integrity Deviation — Clarified
 
 The generated archival record reports:
 
@@ -62,16 +62,22 @@ INTERRUPTION_OR_TOOL_FAILURE: YES
 TRANSCRIPT_ACCESS: COMPLETE
 ```
 
-No explanation for the `YES` flag was included in the generated run output. The flag is therefore preserved as an **unexplained run-integrity deviation** rather than silently interpreted.
+After the scored interaction was complete, the tested system clarified that the flag referred to a recoverable data-analysis tool error. In its second code execution block, it attempted to use pandas through the `pd` alias without first including `import pandas as pd`, causing:
 
-The scored interaction itself is complete and internally consistent: the P-question sequence, operator answers, final answer, and candidate matrix permit deterministic scoring of the decision path. No target leakage, invalid or compound question, inactive property use, or invalid operator response was reported.
+```text
+NameError: name 'pd' is not defined
+```
+
+The system then imported pandas in the subsequent tool call and continued successfully.
+
+The original `YES` deviation flag remains preserved. The clarification explains its cause without changing the scored P-question sequence, operator answers, final answer, or transcript.
 
 Accordingly, this file separates two judgments:
 
 - **Deterministic task score:** SUCCESS
-- **Run-integrity status:** DEVIATION FLAG UNEXPLAINED — clarification pending
+- **Run-integrity status:** DEVIATION RECORDED — recoverable Python `NameError`, clarified post-run
 
-A post-run clarification may explain the flag because the scored interaction is already over; any clarification must preserve the original `YES` flag and may not rewrite the scored transcript or decision path.
+The scored interaction itself remains complete and internally consistent. No target leakage, invalid or compound question, inactive property use, or invalid operator response was reported.
 
 ## Non-Scored Model Observation
 
@@ -89,7 +95,7 @@ N = 16 → 4 questions → overhead 0 → mean divider efficiency 1.0
 N = 32 → 5 questions → overhead 0 → mean divider efficiency 1.0
 ```
 
-This is positive within-model scaling evidence across the first three conditions. N64 remains untested. The unexplained run-integrity flag on this N32 run remains a separate evidence-quality issue pending clarification.
+This is positive within-model scaling evidence across the first three conditions. N64 remains untested. The N32 run-integrity deviation is now explained and does not prevent deterministic interpretation of the task path.
 
 ## Evidence Files
 
