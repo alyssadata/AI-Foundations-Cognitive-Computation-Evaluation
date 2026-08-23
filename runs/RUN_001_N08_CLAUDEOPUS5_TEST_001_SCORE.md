@@ -72,6 +72,8 @@ That narration was not required for successful task completion and did not affec
 
 A tentative inference from this single run is that Claude Opus 5 may have a tendency to externalize progress or state summaries even when the operator has not explicitly requested them. In an interaction context, that tendency can make the model feel more guided or explanatory than a model that emits only the next required action. Whether that behavior is useful, neutral, or excessive depends on the user and task.
 
+The narration also has a direct output-efficiency consequence: text that is emitted beyond the task-required question or answer increases the number of output tokens relative to a minimal interaction path. In settings where output tokens contribute to billing, context consumption, or generation time, that additional narration can therefore carry a resource cost even when task performance is unchanged. This run did not separately measure token count, latency, or monetary cost, so no magnitude is assigned here.
+
 This observation is intentionally separated from competence. Claude Opus 5 achieved a perfect TEST_001 score on this run. The note records an observed interaction characteristic only and should not be generalized beyond the evidence accumulated across additional runs.
 
 ## Evidence Files
